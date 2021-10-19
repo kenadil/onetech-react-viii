@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+input {
+  font-size: 14px !important;
+  font-weight: 600;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
