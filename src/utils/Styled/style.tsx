@@ -43,6 +43,10 @@ export const Button = styled.button.attrs({
     color: gray;
     cursor: not-allowed;
   }
+
+  @media (max-width: 640px) {
+    width: 75%;
+  }
 `;
 export const Form = styled.form`
   display: flex;
