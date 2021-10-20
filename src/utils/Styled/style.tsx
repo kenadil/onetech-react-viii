@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container } from "@mui/material";
 
 export const Inner = styled.div`
-  padding: 75px 0;
+  padding: 20px 0;
 `;
 export const Padding = styled.div<PaddingProps>`
   padding: ${(p) => (p.padding ? p.padding : "10px 0")};
@@ -12,10 +12,14 @@ export const Padding = styled.div<PaddingProps>`
 export const Text = styled.div<TextProps>`
   font-size: ${(p) => (p.fontSize ? p.fontSize : "16px")};
   text-align: ${(p) => (p.textAlign ? p.textAlign : "center")};
-  padding-bottom: 10px;
-  font-weight: 700;
+  font-weight: ${(p) => (p.fontWeight ? p.fontWeight : "700")};
   width: 95%;
   margin: 0;
+  & > p {
+    padding-left: 10px;
+    margin: 0;
+    line-height: 1.5;
+  }
 `;
 export const Status = styled.div``;
 export const Requirement = styled.div`
@@ -43,6 +47,10 @@ export const Button = styled.button.attrs({
     color: gray;
     cursor: not-allowed;
   }
+
+  @media (max-width: 640px) {
+    width: 75%;
+  }
 `;
 export const Form = styled.form`
   display: flex;
@@ -54,7 +62,7 @@ export const Form = styled.form`
 export const Input = styled.input.attrs((props) => ({
   className: props.className,
 }))`
-  padding: 15px 10px;
+  padding: 15px 20px;
   border-radius: 10px;
   display: block;
   width: 100%;
@@ -100,4 +108,21 @@ export const CheckStatus = styled(FontAwesomeIcon).attrs({
 export const RequirementsCheckList = styled(Container)``;
 export const ErrorMessage = styled.span`
   color: red;
+`;
+
+export const InfoBorder = styled.div`
+  border: 1px solid gray;
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 20px;
+`;
+
+export const InfoFlex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > .fa-lg {
+    color: gray;
+  }
 `;

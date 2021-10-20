@@ -5,4 +5,5 @@ export interface PaddingProps {
 export interface TextProps {
   fontSize?: string;
   textAlign?: string;
+  fontWeight?: string;
 }
