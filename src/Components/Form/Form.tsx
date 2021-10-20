@@ -14,6 +14,7 @@ import {
   specialCharactersRegEx,
   uppercaseRegEx,
 } from "../../utils/Regex/regex";
+import Info from "../InfoContainer/Info";
 
 const FormField = () => {
   const [passwordValue, setPasswordValue] = useState<string>("");
@@ -82,6 +83,7 @@ const FormField = () => {
       />
       <Padding padding={"15px 0"} />
       <Text textAlign="left">Пароль должен содержать:</Text>
+      <Padding padding={"5px 0"} />
       <RequirementsCheckList>
         {requirements.map((checkline, index) => (
           <CheckField
@@ -91,7 +93,16 @@ const FormField = () => {
           />
         ))}
       </RequirementsCheckList>
-      <Padding padding={"15px 0"} />
+      <Padding />
+      <Info
+        text={
+          <p>
+            Введенный пароль будет являться паролем для выпущенной ЭЦП. <br />
+            Запомните введенные данные!
+          </p>
+        }
+      />
+      <Padding padding="25px 0" />
       <Button
         disabled={
           (passwordValidationValue.length > 0 &&
