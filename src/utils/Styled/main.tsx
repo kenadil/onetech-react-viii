@@ -1,6 +1,6 @@
 import { Link, Select } from "@mui/material";
 import styled from "styled-components";
-import { BannerSlideProps } from "../types/PaddingProps";
+import { BannerSlideProps, PageLinkProps } from "../types/PaddingProps";
 
 export const PageWrapper = styled.div`
   min-height: 100%;
@@ -59,6 +59,10 @@ export const FlexBox = styled.div.attrs((props) => ({
     width: 63%;
     max-width: 63%;
   }
+
+  & .nav-links {
+    flex: 0 1 3%;
+  }
 `;
 
 export const Container = styled.div`
@@ -94,12 +98,16 @@ export const HeaderSelect = styled(Select).attrs({
   }
 `;
 
-export const PageLink = styled(Link)`
+export const PageLink = styled(Link)<PageLinkProps>`
   transition: 0.3s ease;
   &.header-link,
-  &.header-social {
+  &.header-social,
+  &.nav-links {
     text-decoration: none;
     color: #303030;
+  }
+  &.nav-links {
+    font-size: 0.75rem;
   }
   &.header-link {
     font-weight: 500;
@@ -115,12 +123,26 @@ export const PageLink = styled(Link)`
   & > * {
     vertical-align: middle;
   }
-  & > span {
+  header & > span {
     color: #303030;
     font-weight: 400;
     text-decoration: none;
     font-size: 0.875rem;
     padding-left: 5px;
+  }
+  &.nav-links {
+    padding: 0 28px;
+  }
+  &.nav-links:before {
+    display: block;
+    margin: 0 auto 8px;
+    background-image: ${(p) =>
+      p.background ? `url(${p.background})` : "none"};
+    width: 24px;
+    height: 24px;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center;
   }
   &:hover {
     opacity: 0.5;
@@ -140,11 +162,11 @@ export const Banner = styled.section`
   }
 
   & .carousel .control-prev.control-arrow {
-    left: 50px;
+    left: 10%;
     width: 36px;
   }
   & .carousel .control-next.control-arrow {
-    right: 50px;
+    right: 10%;
     width: 36px;
   }
 
@@ -152,9 +174,8 @@ export const Banner = styled.section`
     background-image: url(/images/arrows/arrowLeft.svg);
     display: block;
     content: "";
-    background-size: 28px 28px;
-    height: 28px;
-    width: 28px;
+    height: 36px;
+    width: 36px;
     margin: 0;
     border: none;
   }
@@ -164,9 +185,8 @@ export const Banner = styled.section`
 
     display: block;
     content: "";
-    background-size: 28px 28px;
-    height: 28px;
-    width: 28px;
+    height: 36px;
+    width: 36px;
     margin: 0;
     border: none;
   }
@@ -249,5 +269,11 @@ export const BannerSlide = styled.div<BannerSlideProps>`
   & button:hover {
     background: #9d2550;
     color: #fff;
+  }
+`;
+
+export const Navigation = styled.div`
+  & .inner {
+    padding: 19px 0;
   }
 `;

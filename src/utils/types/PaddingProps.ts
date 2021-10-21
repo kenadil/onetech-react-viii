@@ -12,3 +12,7 @@ export interface BannerSlideProps {
   textAlign?: string;
   background?: string;
 }
+
+export interface PageLinkProps {
+  background?: string;
+}
