@@ -8,7 +8,7 @@ export interface TextProps {
   fontWeight?: string;
 }
 
-export interface BannerSlideProps {
+export interface SlideProps {
   textAlign?: string;
   background?: string;
 }

@@ -1,17 +1,22 @@
-import { BannerSlide, Container } from "../../utils/Styled/main";
+import { Slide, Container } from "../../utils/Styled/main";
 
 type CarouselSlideProps = {
   backgroundUrl?: string;
-  content?: any;
+  children?: any;
+  className?: string;
 };
 
-const CarouselSlide = ({ backgroundUrl, content }: CarouselSlideProps) => {
+const CarouselSlide = ({
+  backgroundUrl,
+  children,
+  className = "",
+}: CarouselSlideProps) => {
   return (
-    <BannerSlide background={backgroundUrl}>
+    <Slide background={backgroundUrl} className={className}>
       <Container>
-        <div className="inner">{content}</div>
+        <div className="inner">{children}</div>
       </Container>
-    </BannerSlide>
+    </Slide>
   );
 };
 

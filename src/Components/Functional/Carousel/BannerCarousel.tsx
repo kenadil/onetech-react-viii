@@ -1,10 +1,9 @@
-import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import React from "react"; // requires a loader
 import CarouselSlide from "../../CarouselSlide/CarouselSlide";
 import { PageLink } from "../../../utils/Styled/main";
+import FunctionalCarousel from "./FunctionalCarousel";
 
-const FunctionalCarousel = () => {
+const BannerCarousel = () => {
   const BannerOne = (
     <>
       <span>
@@ -38,21 +37,23 @@ const FunctionalCarousel = () => {
     </>
   );
   return (
-    <Carousel showThumbs={false} showStatus={false} dynamicHeight infiniteLoop>
-      <CarouselSlide
-        backgroundUrl="/images/banner/banner1.png"
-        content={BannerOne}
-      />
-      <CarouselSlide
-        backgroundUrl="/images/banner/banner2.png"
-        content={BannerTwo}
-      />
-      <CarouselSlide
-        backgroundUrl="https://medialeaks.ru/wp-content/uploads/2021/08/imgonline-com-ua-compressed-dwxkaeg19bswpzm-600x337.jpg"
-        content={BannerThree}
-      />
-    </Carousel>
+    <FunctionalCarousel
+      showThumbs={false}
+      showStatus={false}
+      dynamicHeight
+      infiniteLoop
+    >
+      <CarouselSlide backgroundUrl="/images/banner/banner1.png">
+        {BannerOne}
+      </CarouselSlide>
+      <CarouselSlide backgroundUrl="/images/banner/banner2.png">
+        {BannerTwo}
+      </CarouselSlide>
+      <CarouselSlide backgroundUrl="https://medialeaks.ru/wp-content/uploads/2021/08/imgonline-com-ua-compressed-dwxkaeg19bswpzm-600x337.jpg">
+        {BannerThree}
+      </CarouselSlide>
+    </FunctionalCarousel>
   );
 };
 
-export default FunctionalCarousel;
+export default BannerCarousel;

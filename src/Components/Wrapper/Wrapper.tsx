@@ -1,5 +1,6 @@
 import { Banner, Content, PageWrapper } from "../../utils/Styled/main";
-import FunctionalCarousel from "../Functional/Carousel/Carousel";
+import Cards from "../Cards/Cards";
+import BannerCarousel from "../Functional/Carousel/BannerCarousel";
 import Routing from "../Functional/Routing/Routing";
 import Header from "../Header/Header";
 
@@ -10,8 +11,9 @@ const Wrapper = () => {
         <Header />
         <Routing />
         <Banner>
-          <FunctionalCarousel />
+          <BannerCarousel />
         </Banner>
+        <Cards />
       </Content>
     </PageWrapper>
   );

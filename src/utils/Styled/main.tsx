@@ -1,6 +1,6 @@
 import { Link, Select } from "@mui/material";
 import styled from "styled-components";
-import { BannerSlideProps, PageLinkProps } from "../types/PaddingProps";
+import { SlideProps, PageLinkProps } from "../types/PaddingProps";
 
 export const PageWrapper = styled.div`
   min-height: 100%;
@@ -74,6 +74,15 @@ export const Container = styled.div`
 
   @media (max-width: 1899px) {
     max-width: 1100px;
+  }
+
+  .card-carousel & {
+    @media (min-width: 1920px) {
+      max-width: 1278px;
+    }
+    @media (max-width: 1899px) {
+      max-width: 1158px;
+    }
   }
 `;
 
@@ -151,9 +160,18 @@ export const PageLink = styled(Link)<PageLinkProps>`
   .jscfe > &:first-child {
     padding-right: 47px;
   }
+
+  &.card-link {
+    text-align: center;
+    display: block;
+    padding-top: 41px;
+  }
 `;
 
 export const Banner = styled.section`
+  & .inner {
+    color: #fff;
+  }
   & .slider-wrapper {
     height: 400px !important;
   }
@@ -162,12 +180,20 @@ export const Banner = styled.section`
   }
 
   & .carousel .control-prev.control-arrow {
-    left: 10%;
+    left: 244px;
     width: 36px;
+
+    @media (max-width: 1899px) {
+      left: 106px;
+    }
   }
   & .carousel .control-next.control-arrow {
-    right: 10%;
+    right: 244px;
     width: 36px;
+
+    @media (max-width: 1899px) {
+      right: 106px;
+    }
   }
 
   & .carousel.carousel-slider .control-arrow.control-prev:before {
@@ -203,19 +229,18 @@ export const Banner = styled.section`
 
   & .control-dots {
     text-align: left;
-    bottom: 33px;
-
+    height: 0;
+    top: 342px;
+    position: relative;
+    max-width: 1236px;
+    margin: 0 auto;
     @media (max-width: 1899px) {
-      left: 209px;
-    }
-
-    @media (min-width: 1900px) {
-      left: 342px;
+      max-width: 1116px;
     }
   }
 `;
 
-export const BannerSlide = styled.div<BannerSlideProps>`
+export const Slide = styled.div<SlideProps>`
   background: ${(p) => (p.background ? "url(" + p.background + ")" : "none")};
   background-size: cover;
   background-repeat: no-repeat;
@@ -270,10 +295,86 @@ export const BannerSlide = styled.div<BannerSlideProps>`
     background: #9d2550;
     color: #fff;
   }
+
+  &.card-carousel .inner {
+    padding: 24px 0 0;
+  }
 `;
 
 export const Navigation = styled.div`
   & .inner {
     padding: 19px 0;
+  }
+`;
+
+export const CardContainer = styled.section`
+  & .inner {
+    padding: 64px 0 0;
+  }
+
+  & .slider-wrapper {
+    height: auto;
+    min-height: 585px;
+  }
+
+  & .carousel .control-dots .dot {
+    opacity: 1;
+    box-shadow: none;
+    width: 18px;
+    height: 18px;
+  }
+
+  & .carousel .control-dots .dot:after {
+    content: "";
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 24%;
+    margin: 0 4.5px 0 -4px;
+    background-image: url(/images/icons/dot.svg);
+    background-size: 8px 8px;
+  }
+
+  & .carousel .control-dots .dot.selected {
+    border: 1px solid #303030;
+  }
+`;
+
+export const Title = styled.h1`
+  margin: 0;
+  font-size: 1.875rem;
+  color: #1e2a41;
+  font-weight: 500;
+`;
+
+export const Card = styled.div`
+  flex: 0 1 336px;
+
+  & p,
+  & h1,
+  & h2,
+  & h3,
+  & h4 {
+    margin: 0;
+    padding-bottom: 16px;
+    text-align: center;
+  }
+
+  & img {
+    width: 100%;
+  }
+
+  & .forte.card-container {
+    color: black;
+  }
+
+  & .forte.card-container button {
+    background: #1e2a41;
+    color: white;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 400;
   }
 `;
