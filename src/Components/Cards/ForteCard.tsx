@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, PageLink } from "../../utils/Styled/main";
 
 export type ForteCardProps = {
@@ -7,9 +8,16 @@ export type ForteCardProps = {
 };
 
 const ForteCard = ({ name, price, url }: ForteCardProps) => {
+  const [isOVer, setIsOVer] = useState(false);
   return (
-    <Card className="card">
-      <img src={url} alt={url} />
+    <Card
+      className="card"
+      onMouseOver={() => setIsOVer(true)}
+      onMouseLeave={() => setIsOVer(false)}
+    >
+      <div className={`shine-container ${isOVer ? "over" : ""}`}>
+        <img src={url} alt={url} />
+      </div>
       <div className="forte card-container">
         <h4 className="card-title">{name}</h4>
         <p className="card-price">Выпуск карты бесплатно</p>

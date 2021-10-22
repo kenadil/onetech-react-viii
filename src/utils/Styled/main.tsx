@@ -1,9 +1,23 @@
-import { Link, Select } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  Link,
+  Select,
+  Slider,
+} from "@mui/material";
 import styled from "styled-components";
+
 import { SlideProps, PageLinkProps } from "../types/PaddingProps";
 
 export const PageWrapper = styled.div`
   min-height: 100%;
+  & p,
+  & h1,
+  & h2,
+  & h3,
+  & h4 {
+    margin: 0;
+  }
 
   display: flex;
   justify-content: space-between;
@@ -357,7 +371,6 @@ export const Card = styled.div`
   & h2,
   & h3,
   & h4 {
-    margin: 0;
     padding-bottom: 16px;
     text-align: center;
   }
@@ -376,5 +389,195 @@ export const Card = styled.div`
     padding: 14px 32px;
     font-size: 1rem;
     font-weight: 400;
+  }
+
+  & .shine-container {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  & .shine-container.over {
+    transform: scale(1.1);
+  }
+  & .shine-container.over:after {
+    content: "";
+    top: 0;
+    transform: translateX(100%);
+    width: 100%;
+    height: 220px;
+    position: absolute;
+    z-index: 1;
+    animation: slide 2s 1s;
+
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(128, 186, 232, 0) 99%,
+      rgba(125, 185, 232, 0) 100%
+    ); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
+  }
+
+  /* animation */
+
+  @keyframes slide {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+`;
+
+export const LoanContainer = styled.section`
+  & .inner {
+    padding: 69px 0 24px;
+  }
+
+  & .loans-description {
+    padding: 24px 0;
+  }
+
+  & h4 {
+    color: #303030;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 0 0 1px;
+  }
+
+  & .period h4 {
+    padding: 20px 0 0;
+  }
+`;
+
+export const CalculatorForm = styled(FormControl)`
+  && {
+    display: block;
+  }
+`;
+
+export const CalculatorContainer = styled.div`
+  padding: 32px;
+  background: #f2f2f2;
+  border-radius: 4px;
+
+  & .calculator-box {
+    padding: 0 0 21px;
+  }
+
+  & .calculator-container {
+    flex: 0 1 60%;
+    border-right: 1px solid #e0e0e0;
+  }
+
+  & .calculator-result {
+    flex: 0 1 40%;
+  }
+
+  & .calculator-result .inner {
+    padding: 29px 32px;
+  }
+
+  & .month-pay .description,
+  & .reward-pay .description {
+    font-size: 0.875rem;
+    padding: 8px 0;
+  }
+
+  & .reward-pay {
+    padding: 24px 0 31px;
+  }
+
+  & .reward-pay .result {
+    font-size: 1.5rem;
+  }
+
+  & .month-pay .result {
+    font-size: 1.875rem;
+    color: #9d2550;
+    font-weight: 500;
+  }
+
+  & .slider-selection {
+    font-size: 1.5rem;
+  }
+
+  & .slider-selection {
+    padding: 0 24px 0;
+    flex: 0 1 15%;
+    min-width: 154px;
+  }
+
+  && .calculator-label {
+    padding: 20px 0 0;
+    font-size: 0.875rem;
+    color: #737373;
+  }
+
+  && button[type="submit"] {
+    padding: 14px 32px;
+    background: #1e2a41;
+    border: none;
+    color: #fff;
+
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  && button[type="submit"]:hover {
+    opacity: 0.5;
+  }
+`;
+
+export const CalculatorSlider = styled(Slider)`
+  && {
+    width: auto;
+    flex: 0 1 75%;
+    margin-bottom: 0;
+    color: #fff;
+  }
+
+  & .MuiSlider-mark {
+    display: none;
+  }
+
+  & .css-14pt78w-MuiSlider-rail {
+    opacity: 1;
+  }
+
+  & .MuiSlider-valueLabel {
+    visibility: hidden;
+  }
+
+  & .css-1gv0vcd-MuiSlider-track {
+    color: #1e2a41;
+  }
+  & .css-eg0mwd-MuiSlider-thumb::after {
+    background-image: url(/images/icons/slider.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 8px;
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const IncomeSwitch = styled(FormControlLabel)`
+  padding: 26px 12px 0;
+
+  && {
+    font-size: 1rem;
+  }
+
+  && .css-ahj2mt-MuiTypography-root {
+    padding: 0 16px;
   }
 `;

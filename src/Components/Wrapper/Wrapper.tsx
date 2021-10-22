@@ -3,6 +3,7 @@ import Cards from "../Cards/Cards";
 import BannerCarousel from "../Functional/Carousel/BannerCarousel";
 import Routing from "../Functional/Routing/Routing";
 import Header from "../Header/Header";
+import Loans from "../Loans/Loans";
 
 const Wrapper = () => {
   return (
@@ -14,6 +15,7 @@ const Wrapper = () => {
           <BannerCarousel />
         </Banner>
         <Cards />
+        <Loans />
       </Content>
     </PageWrapper>
   );
