@@ -4,6 +4,8 @@ import LoanContext from "../../../utils/Context/Context";
 const Result = () => {
   const { amount, duration } = useContext(LoanContext);
 
+  const { discountCheck } = useContext(LoanContext);
+
   return (
     <div className="inner">
       <div className="month-pay">
@@ -19,7 +21,7 @@ const Result = () => {
       </div>
       <div className="reward-pay">
         <p className="description">Ставка вознаграждения</p>
-        <p className="result">16.99%</p>
+        <p className="result">{!discountCheck ? "16.99%" : "9.99%"} </p>
       </div>
       <button type="submit">Оформить кредит</button>
     </div>

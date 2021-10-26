@@ -2,7 +2,7 @@ import { useContext } from "react";
 import LoanContext, { defaultValue } from "../../../utils/Context/Context";
 import { CalculatorSlider, FlexBox } from "../../../utils/Styled/main";
 
-const max_value = 1000000;
+const max_value = 10000000;
 const min_value = 10000;
 
 const LoanSlider = () => {
@@ -19,8 +19,8 @@ const LoanSlider = () => {
         onChange={handleAmountChange}
         valueLabelDisplay="auto"
         marks={[
-          { value: 60000, label: "10 000 ₸" },
-          { value: 925000, label: "1 000 000 ₸" },
+          { value: 750000, label: "10 000 ₸" },
+          { value: 8857000, label: "10 000 000 ₸" },
         ]}
       />
       <p className="slider-selection">{`${amount

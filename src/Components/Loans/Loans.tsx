@@ -12,6 +12,8 @@ const Loans = () => {
     number | string | Array<number | string>
   >(6);
 
+  const [discountCheck, setDiscountCheck] = useState<boolean>(false);
+
   const handleAmountChange = (event: Event, newValue: number | number[]) => {
     setAmount(newValue);
   };
@@ -19,9 +21,20 @@ const Loans = () => {
   const handleDurationChange = (event: Event, newValue: number | number[]) => {
     setDuration(newValue);
   };
+
+  const handleCheckDiscount = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDiscountCheck(event.target.checked);
+  };
   return (
     <LoanContext.Provider
-      value={{ amount, duration, handleAmountChange, handleDurationChange }}
+      value={{
+        amount,
+        duration,
+        discountCheck,
+        handleAmountChange,
+        handleDurationChange,
+        handleCheckDiscount,
+      }}
     >
       <LoanContainer>
         <Container>

@@ -509,7 +509,7 @@ export const CalculatorContainer = styled.div`
   & .slider-selection {
     padding: 0 24px 0;
     flex: 0 1 15%;
-    min-width: 154px;
+    min-width: 210px;
   }
 
   && .calculator-label {
@@ -580,4 +580,65 @@ export const IncomeSwitch = styled(FormControlLabel)`
   && .css-ahj2mt-MuiTypography-root {
     padding: 0 16px;
   }
+`;
+
+export const CurrencyExchange = styled.section`
+  color: #303030;
+
+  & .inner {
+    padding: 169px 0;
+  }
+
+  & table {
+    flex: 0 1 40%;
+  }
+
+  & .currency-description {
+    color: #303030;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 24px 0;
+  }
+
+  & .currency-name,
+  & .currency-buy,
+  & .currency-sell {
+    font-size: 1.25rem !important;
+    font-weight: 400;
+  }
+
+  & td,
+  & th {
+    border: none;
+  }
+
+  & .currency-name {
+    font-weight: 600;
+    padding-left: 0;
+  }
+
+  & .table-header {
+    font-size: 0.75rem;
+    font-weight: 400;
+
+    padding-bottom: 7px;
+  }
+
+  & .currency-icon {
+    text-align: center;
+  }
+
+  & .gray-row {
+    background-color: #f2f2f2;
+  }
+
+  // & .currency-name:before {
+  //   content: "";
+  //   display: inline-block;
+  //   background-image: url(/images/icons/usd.svg);
+  //   width: 17px;
+  //   height: 28px;
+  //   background-size: 17px 8.5px;
+  //   background-repeat: no-repeat;
+  // }
 `;

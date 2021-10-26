@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import LoanContext from "../../utils/Context/Context";
 import {
   CalculatorContainer,
   CalculatorForm,
@@ -10,6 +12,7 @@ import LoanSlider from "../Functional/Slider/LoanSlider";
 import PeriodSlider from "../Functional/Slider/PeriodSlider";
 
 const Calculator = () => {
+  const { discountCheck, handleCheckDiscount } = useContext(LoanContext);
   return (
     <CalculatorContainer>
       <CalculatorForm>
@@ -24,7 +27,12 @@ const Calculator = () => {
               <PeriodSlider />
             </div>
             <IncomeSwitch
-              control={<AntSwitch defaultChecked={false} />}
+              control={
+                <AntSwitch
+                  checked={discountCheck}
+                  onChange={handleCheckDiscount}
+                />
+              }
               label="Я получаю зарплату по карте"
             />
             <p className="calculator-label">
