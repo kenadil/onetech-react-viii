@@ -5,6 +5,7 @@ import BannerCarousel from "../Functional/Carousel/BannerCarousel";
 import Routing from "../Functional/Routing/Routing";
 import Header from "../Header/Header";
 import Loans from "../Loans/Loans";
+import StaticCards from "../StaticCards/StaticCards";
 
 const Wrapper = () => {
   return (
@@ -17,6 +18,7 @@ const Wrapper = () => {
         </Banner>
         <Cards />
         <Loans />
+        <StaticCards />
         <Exchange />
       </Content>
     </PageWrapper>

@@ -20,9 +20,17 @@ const CurrencyRow = ({
       `https://free.currconv.com/api/v7/convert?q=${currencyType}&compact=ultra&apiKey=4739c64b6e5b43aa6d6a`
     )
       .then((response) => response.json())
-      .then((data) => setCurrency(data[currencyType].toFixed(2)))
+      .then(
+        (data) => setCurrency(data[currencyType].toFixed(2))
+        // setCurrency(Number(450.23923).toFixed(2))
+      )
       .catch(() => setCurrency(Number(0)));
-  });
+  }, [currencyType]);
+
+  const sell = Number(
+    parseFloat(currency) + parseFloat(currency) * 0.019
+  ).toFixed(2);
+  console.log(sell);
   return (
     <TableRow key={name} className={`currency-row ${isGray ? "gray-row" : ""}`}>
       <TableCell className="currency-icon" scope="row">
@@ -32,10 +40,10 @@ const CurrencyRow = ({
         {name}
       </TableCell>
       <TableCell className="currency-buy" align="right">
-        {currency?.toFixed(2)}
+        {currency}
       </TableCell>
       <TableCell className="currency-sell" align="right">
-        {(currency + currency * 0.019)?.toFixed(2)}
+        {sell}
       </TableCell>
     </TableRow>
   );

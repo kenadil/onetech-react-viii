@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 
-import { SlideProps, PageLinkProps } from "../types/PaddingProps";
+import { SlideProps, PageLinkProps, TextProps } from "../types/PaddingProps";
 
 export const PageWrapper = styled.div`
   min-height: 100%;
@@ -356,9 +356,9 @@ export const CardContainer = styled.section`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h1<TextProps>`
   margin: 0;
-  font-size: 1.875rem;
+  font-size: ${(p) => (p.fontSize ? p.fontSize : "1.875rem")};
   color: #1e2a41;
   font-weight: 500;
 `;
@@ -579,6 +579,84 @@ export const IncomeSwitch = styled(FormControlLabel)`
 
   && .css-ahj2mt-MuiTypography-root {
     padding: 0 16px;
+  }
+`;
+
+export const InfoCard = styled.div`
+  background: #f2f2f2;
+  border-radius: 4px;
+
+  padding: 32px;
+`;
+
+export const Services = styled.section`
+  color: #303030;
+
+  & ${InfoCard} {
+    flex: 0 1 44%;
+
+    @media (max-width: 1899px) {
+      flex: 0 1 43%;
+    }
+  }
+
+  & ${FlexBox}.main-flex {
+    align-items: flex-start;
+  }
+
+  & button {
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  & .btn-container.white-btn button {
+    background-color: #fff;
+    transition: 0.3s ease;
+
+    color: #0e2b91;
+    :hover {
+      color: #fff;
+      background-color: #0e2b91;
+    }
+  }
+
+  & .btn-container.black-btn button {
+    background-color: #1e2a41;
+    transition: 0.3s ease;
+
+    color: #fff;
+    :hover {
+      opacity: 0.75;
+    }
+  }
+
+  & .purchases {
+    background-image: url(/images/exchanges/purchases.png);
+    background-repeat: no-repeat;
+    background-position: 90% bottom;
+  }
+
+  & button {
+    padding: 14px 32px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  & .image {
+    flex: 0 1 50%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  & p {
+    font-size: 1rem;
+
+    min-height: 97px;
+    transform: translateY(16px);
   }
 `;
 
