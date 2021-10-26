@@ -2,6 +2,9 @@ import { useContext } from "react";
 import LoanContext, { defaultValue } from "../../../utils/Context/Context";
 import { CalculatorSlider, FlexBox } from "../../../utils/Styled/main";
 
+const max_value = 36;
+const min_value = 3;
+
 const PeriodSlider = () => {
   const { duration, handleDurationChange } = useContext(LoanContext);
   const valuable = "месяцев";
@@ -9,8 +12,8 @@ const PeriodSlider = () => {
     <FlexBox>
       <CalculatorSlider
         value={typeof duration === "number" ? duration : defaultValue.amount}
-        min={3}
-        max={36}
+        min={min_value}
+        max={max_value}
         aria-label="Small steps"
         step={3}
         onChange={handleDurationChange}
