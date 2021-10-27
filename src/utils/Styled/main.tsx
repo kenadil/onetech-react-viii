@@ -886,3 +886,88 @@ export const CurrencyExchange = styled.section`
     flex: 0 1 45%;
   }
 `;
+
+export const PageFooter = styled.footer`
+  background: #f8f8f8;
+  padding: 32px 0;
+
+  & .footer-upper {
+    border-bottom: 1px solid #bdbdbd;
+    padding-bottom: 48px;
+  }
+
+  & .footer-lower {
+    padding: 24px 0 0;
+
+    .text {
+      padding-right: 67px;
+    }
+    p {
+      font-size: 0.875rem;
+      color: #303030;
+    }
+
+    .footer-icons a {
+      display: inline-block;
+      padding: 0 32px;
+    }
+
+    button {
+      background: #303030;
+      border: none;
+      border-box: 4px;
+      outline: none;
+      padding: 15px 12px;
+      color: white;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+
+      :after {
+        content: "";
+        background: url(/images/icons/substract.svg);
+        background-repeat: no-repeat;
+        width: 23px;
+        height: 17px;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 0 9px;
+      }
+    }
+  }
+
+  & ${FlexBox} {
+    align-items: flex-start;
+
+    .link-container {
+      min-width: 213px;
+    }
+  }
+
+  & ${Title} {
+    padding-bottom: 20px;
+  }
+
+  & ${PageLink} {
+    display: block;
+    padding-bottom: 16px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: #303030;
+    font-weight: 400;
+
+    :last-child {
+      padding-bottom: 0;
+    }
+
+    :hover {
+      color: #9d2550;
+      opacity: 1;
+    }
+  }
+
+  & .big-link {
+    font-weight: 500;
+    color: #0e2b91;
+  }
+`;
