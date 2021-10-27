@@ -6,6 +6,7 @@ import Routing from "../Functional/Routing/Routing";
 import Header from "../Header/Header";
 import Loans from "../Loans/Loans";
 import StaticCards from "../StaticCards/StaticCards";
+import TextCards from "../TextCards/TextCards";
 
 const Wrapper = () => {
   return (
@@ -19,6 +20,7 @@ const Wrapper = () => {
         <Cards />
         <Loans />
         <StaticCards />
+        <TextCards />
         <Exchange />
       </Content>
     </PageWrapper>

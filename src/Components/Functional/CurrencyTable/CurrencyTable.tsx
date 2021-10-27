@@ -5,21 +5,12 @@ import {
   TableCell,
   TableHead,
 } from "@mui/material";
+import { useContext } from "react";
+import CurrencyContext from "../../../utils/Context/CurrencyContext";
 import CurrencyRow from "./CurrencyRow";
 
-type CurrencyRowType = {
-  icon?: string;
-  name: string;
-  currencyType: string;
-};
-
 const CurrencyTable = () => {
-  const currencyTable: CurrencyRowType[] = [
-    { name: "USD", icon: "/images/icons/usd.svg", currencyType: "USD_KZT" },
-    { name: "EUR", icon: "/images/icons/eur.svg", currencyType: "EUR_KZT" },
-    { name: "RUB", icon: "/images/icons/rub.svg", currencyType: "RUB_KZT" },
-    { name: "GBP", icon: "/images/icons/gbp.svg", currencyType: "GBP_KZT" },
-  ];
+  const currency = useContext(CurrencyContext);
   return (
     <Table>
       <TableHead>
@@ -35,12 +26,13 @@ const CurrencyTable = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {currencyTable.map((row, index) => (
+        {currency.map((row, index) => (
           <CurrencyRow
             name={row.name}
             icon={row.icon}
             isGray={index % 2 === 0}
-            currencyType={row.currencyType}
+            value={row.value}
+            key={index}
           />
         ))}
       </TableBody>
