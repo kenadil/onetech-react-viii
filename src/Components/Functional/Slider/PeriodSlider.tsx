@@ -41,7 +41,7 @@ const PeriodSlider = () => {
         onChange={handleDurationChange}
         valueLabelDisplay="auto"
         marks={[
-          { value: 8.25, label: "3 месяцев" },
+          { value: 7.5, label: "3 месяцев" },
           { value: 57.5, label: "5 лет" },
         ]}
       />

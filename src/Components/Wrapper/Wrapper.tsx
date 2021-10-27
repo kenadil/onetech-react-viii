@@ -5,6 +5,7 @@ import BannerCarousel from "../Functional/Carousel/BannerCarousel";
 import Routing from "../Functional/Routing/Routing";
 import Header from "../Header/Header";
 import Loans from "../Loans/Loans";
+import MobileAd from "../MobileAd/MobileAd";
 import StaticCards from "../StaticCards/StaticCards";
 import TextCards from "../TextCards/TextCards";
 
@@ -21,6 +22,7 @@ const Wrapper = () => {
         <Loans />
         <StaticCards />
         <TextCards />
+        <MobileAd />
         <Exchange />
       </Content>
     </PageWrapper>

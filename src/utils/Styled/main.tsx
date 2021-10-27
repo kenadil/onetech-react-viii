@@ -662,7 +662,7 @@ export const Services = styled.section`
 
 export const Help = styled.section`
   & .inner {
-    padding: 64px 0 0;
+    padding: 64px 0 168px;
   }
 
   & ${FlexBox} {
@@ -682,6 +682,45 @@ export const Help = styled.section`
 
   & ${Title} {
     padding: 28px 0 16px;
+  }
+`;
+
+export const PhoneAd = styled.section`
+  background: #f2f2f2;
+
+  & .inner {
+    padding: 48px 0;
+  }
+
+  & ul {
+    margin: 0;
+    padding-top: 24px;
+    padding-bottom: 25px;
+    padding-inline-start: 20px;
+  }
+
+  & ul li {
+    font-size: 1rem;
+    padding-bottom: 16px;
+  }
+
+  & ul li:last-child {
+    padding-bottom: 0;
+  }
+
+  & ${PageLink}:first-child {
+    margin-right: 17px;
+  }
+
+  & .phone-ad-image {
+    position: relative;
+    left: -40%;
+    img {
+      position: absolute;
+
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 `;
 
@@ -791,6 +830,10 @@ export const ConverterInput = styled.div`
 export const CurrencyExchange = styled.section`
   color: #303030;
   position: relative;
+
+  & .MuiTableCell-root {
+    font-family: "Rubik", sans-serif;
+  }
 
   & .inner {
     padding: 169px 0 66px;

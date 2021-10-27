@@ -19,7 +19,7 @@ const LoanSlider = () => {
         onChange={handleAmountChange}
         valueLabelDisplay="auto"
         marks={[
-          { value: 750000, label: "10 000 ₸" },
+          { value: 600000, label: "10 000 ₸" },
           { value: 8857000, label: "10 000 000 ₸" },
         ]}
       />
