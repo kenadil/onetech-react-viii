@@ -714,7 +714,7 @@ export const PhoneAd = styled.section`
 
   & .phone-ad-image {
     position: relative;
-    left: -40%;
+    left: -35%;
     img {
       position: absolute;
 
