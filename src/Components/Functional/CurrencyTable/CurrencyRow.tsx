@@ -19,6 +19,7 @@ const CurrencyRow = ({
       : 0;
   const sell =
     Math.round((curValue + curValue * 0.019 + Number.EPSILON) * 100) / 100;
+
   return (
     <TableRow key={name} className={`currency-row ${isGray ? "gray-row" : ""}`}>
       <TableCell className="currency-icon" scope="row">

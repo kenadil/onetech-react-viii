@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, FlexBox, PageHeader } from "../../utils/Styled/main";
 import GeoSelector from "../Functional/GeoSelector/GeoSelector";
 import LanguageSelector from "../Functional/LanguageSelector/LanguageSelector";

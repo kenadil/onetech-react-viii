@@ -26,19 +26,9 @@ export const PageWrapper = styled.div`
   & a {
     cursor: pointer;
   }
-`;
 
-export const Content = styled.div``;
-
-export const PageHeader = styled.header`
-  background-color: #f8f8f8;
-  box-sizing: content-box;
-
-  & nav {
-    padding: 20px 0;
-  }
-  & nav a {
-    padding: 20px 15px;
+  @media (max-width: 480px) {
+    overflow-x: hidden;
   }
 `;
 
@@ -77,26 +67,9 @@ export const FlexBox = styled.div.attrs((props) => ({
   & .nav-links {
     flex: 0 1 3%;
   }
-`;
 
-export const Container = styled.div`
-  margin: 0 auto;
-
-  @media (min-width: 1920px) {
-    max-width: 1220px;
-  }
-
-  @media (max-width: 1899px) {
-    max-width: 1100px;
-  }
-
-  .card-carousel & {
-    @media (min-width: 1920px) {
-      max-width: 1278px;
-    }
-    @media (max-width: 1899px) {
-      max-width: 1158px;
-    }
+  @media (max-width: 480px) {
+    flex-direction: column;
   }
 `;
 
@@ -118,6 +91,73 @@ export const HeaderSelect = styled(Select).attrs({
 
   &.reverse {
     flex-direction: row-reverse;
+  }
+  @media (max-width: 480px) {
+    display: none !important;
+  }
+`;
+
+export const Content = styled.div``;
+
+export const PageHeader = styled.header`
+  background-color: #f8f8f8;
+  box-sizing: content-box;
+
+  & nav {
+    padding: 20px 0;
+  }
+  & nav a {
+    padding: 20px 15px;
+  }
+
+  @media (max-width: 480px) {
+    & .header-social:first-child {
+      display: none;
+    }
+
+    & ${FlexBox} {
+      flex-direction: row;
+    }
+
+    & .logo-container {
+      padding: 10px 0;
+    }
+  }
+`;
+
+export const Container = styled.div`
+  margin: 0 auto;
+
+  @media (min-width: 1920px) {
+    max-width: 1220px;
+  }
+
+  @media (max-width: 1899px) {
+    max-width: 1100px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 300px;
+
+    & ${HeaderSelect}, & ${HeaderSelect}.reverse {
+      display: none;
+    }
+
+    nav {
+      display: none;
+    }
+  }
+
+  .card-carousel & {
+    @media (min-width: 1920px) {
+      max-width: 1278px;
+    }
+    @media (max-width: 1899px) {
+      max-width: 1158px;
+    }
+    @media (max-width: 480px) {
+      max-width: 300px;
+    }
   }
 `;
 
@@ -179,6 +219,34 @@ export const PageLink = styled(Link)<PageLinkProps>`
     text-align: center;
     display: block;
     padding-top: 41px;
+    @media (max-width: 480px) {
+      padding-top: 24px;
+    }
+  }
+`;
+
+export const VisualImage = styled.img`
+  width: 454px !important;
+  height: 397px;
+  transform: translateY(-8%);
+  object-fit: contain;
+
+  @media (max-width: 480px) {
+    transform: translateY(-50%);
+    position: absolute;
+    width: 140px !important;
+    height: 140px;
+    right: 0;
+    top: 50%;
+  }
+`;
+
+export const BannerDescription = styled.p`
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding-bottom: 26px;
+    width: 157px;
+    height: 94px;
   }
 `;
 
@@ -188,9 +256,16 @@ export const Banner = styled.section`
   }
   & .slider-wrapper {
     height: 400px !important;
+    @media (max-width: 480px) {
+      height: 297px !important;
+    }
   }
   & .carousel.carousel-slider .control-arrow:hover {
     background: none;
+
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 
   & .carousel .control-prev.control-arrow {
@@ -200,6 +275,10 @@ export const Banner = styled.section`
     @media (max-width: 1899px) {
       left: 106px;
     }
+
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
   & .carousel .control-next.control-arrow {
     right: 244px;
@@ -207,6 +286,9 @@ export const Banner = styled.section`
 
     @media (max-width: 1899px) {
       right: 106px;
+    }
+    @media (max-width: 480px) {
+      display: none;
     }
   }
 
@@ -251,6 +333,17 @@ export const Banner = styled.section`
     @media (max-width: 1899px) {
       max-width: 1116px;
     }
+
+    @media (max-width: 480px) {
+      position: absolute;
+      top: 250px;
+      display: table;
+      max-width: 300px;
+      margin: 0 auto;
+      text-align: center;
+      margin-left: -150px;
+      left: 50%;
+    }
   }
 `;
 
@@ -260,16 +353,29 @@ export const Slide = styled.div<SlideProps>`
   background-repeat: no-repeat;
   background-position: center;
 
+  & ${FlexBox} {
+    align-items: flex-start;
+    @media (max-width: 480px) {
+      flex-direction: row;
+    }
+  }
   & .inner {
     padding: 31px 0;
     text-align: ${(p) => (p.textAlign ? p.textAlign : "left")} !important;
-    min-height: 400px;
     color: white;
     font-weight: 300;
+    min-height: 400px;
+    @media (max-width: 480px) {
+      min-height: 297px;
+    }
   }
 
   & span {
     font-size: 0.75rem;
+
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 
   & span > a {
@@ -283,6 +389,12 @@ export const Slide = styled.div<SlideProps>`
     font-size: 3rem;
     margin: 0;
     font-weight: 400;
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding: 0 0 19px;
+    }
   }
 
   & p {
@@ -303,6 +415,9 @@ export const Slide = styled.div<SlideProps>`
     color: #9d2550;
     transition: 0.3s linear;
     cursor: pointer;
+    @media (max-width: 480px) {
+      padding: 15px 23px;
+    }
   }
 
   & button:hover {
@@ -318,6 +433,10 @@ export const Slide = styled.div<SlideProps>`
 export const Navigation = styled.div`
   & .inner {
     padding: 19px 0;
+  }
+
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
@@ -447,16 +566,34 @@ export const LoanContainer = styled.section`
     font-size: 1rem;
     font-weight: normal;
     padding: 0 0 1px;
+    @media (max-width: 480px) {
+      font-size: 0.875rem;
+    }
+  }
+
+  & .period {
+    @media (max-width: 480px) {
+      padding-top: 24px !important;
+    }
   }
 
   & .period h4 {
     padding: 20px 0 0;
+    @media (max-width: 480px) {
+      padding: 0;
+    }
   }
 `;
 
 export const CalculatorForm = styled(FormControl)`
   && {
     display: block;
+
+    .rcl {
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 0 0 16px;
+    }
   }
 `;
 
@@ -465,6 +602,10 @@ export const CalculatorContainer = styled.div`
   background: #f2f2f2;
   border-radius: 4px;
 
+  @media (max-width: 480px) {
+    padding: 24px;
+  }
+
   & .calculator-box {
     padding: 0 0 21px;
   }
@@ -472,6 +613,11 @@ export const CalculatorContainer = styled.div`
   & .calculator-container {
     flex: 0 1 60%;
     border-right: 1px solid #e0e0e0;
+    @media (max-width: 480px) {
+      border-bottom: 1px solid #e0e0e0;
+      border-right: none;
+      padding-bottom: 24px;
+    }
   }
 
   & .calculator-result {
@@ -480,12 +626,19 @@ export const CalculatorContainer = styled.div`
 
   & .calculator-result .inner {
     padding: 29px 32px;
+    @media (max-width: 480px) {
+      padding: 35px 0 0;
+    }
   }
 
   & .month-pay .description,
   & .reward-pay .description {
     font-size: 0.875rem;
     padding: 8px 0;
+
+    @media (max-width: 480px) {
+      font-size: 0.75rem;
+    }
   }
 
   & .reward-pay {
@@ -500,22 +653,56 @@ export const CalculatorContainer = styled.div`
     font-size: 1.875rem;
     color: #9d2550;
     font-weight: 500;
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+    }
+  }
+  & .month-pay,
+  & .reward-pay {
+    @media (max-width: 480px) {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
   }
 
   & .slider-selection {
     font-size: 1.5rem;
-  }
-
-  & .slider-selection {
     padding: 0 24px 0;
     flex: 0 1 15%;
     min-width: 210px;
+    @media (max-width: 480px) {
+      font-size: 0.9375rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0;
+      flex: none;
+      min-width: 0;
+    }
+  }
+
+  & ${FlexBox} .slider-selection {
+    display: none;
+    @media (max-width: 480px) {
+      display: inline-block;
+    }
+  }
+  & .slider-selection.selected {
+    display: block;
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 
   && .calculator-label {
     padding: 20px 0 0;
     font-size: 0.875rem;
     color: #737373;
+
+    @media (max-width: 480px) {
+      padding: 24px 0;
+    }
   }
 
   && button[type="submit"] {
@@ -530,6 +717,11 @@ export const CalculatorContainer = styled.div`
 
     transition: 0.3s ease;
     cursor: pointer;
+
+    @media (max-width: 480px) {
+      display: block;
+      margin: 0 auto;
+    }
   }
 
   && button[type="submit"]:hover {
@@ -543,6 +735,26 @@ export const CalculatorSlider = styled(Slider)`
     flex: 0 1 75%;
     margin-bottom: 0;
     color: #fff;
+
+    @media (max-width: 480px) {
+      width: 260px;
+    }
+  }
+
+  && .css-1eoe787-MuiSlider-markLabel {
+    left: 0 !important;
+    transform: none;
+    color: #303030;
+    font-size: 0.75rem;
+  }
+
+  && .css-yafthl-MuiSlider-markLabel,
+  && .css-1eoe787-MuiSlider-markLabel[data-index="1"] {
+    left: auto !important;
+    right: 0;
+    transform: none;
+    color: #303030;
+    font-size: 0.75rem;
   }
 
   & .MuiSlider-mark {
@@ -573,20 +785,39 @@ export const CalculatorSlider = styled(Slider)`
 export const IncomeSwitch = styled(FormControlLabel)`
   padding: 26px 12px 0;
 
+  @media (max-width: 480px) {
+    padding: 0;
+  }
+
   && {
     font-size: 1rem;
+    margin: 0;
   }
 
   && .css-ahj2mt-MuiTypography-root {
     padding: 0 16px;
+    font-family: "Rubik", sans-serif;
+    letter-spacing: normal;
   }
 `;
+
+export const LargeGapText = styled.p``;
 
 export const InfoCard = styled.div`
   background: #f2f2f2;
   border-radius: 4px;
 
   padding: 32px;
+
+  @media (max-width: 480px) {
+    padding: 24px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 24px;
+    & .text h1 {
+      max-width: 220px;
+    }
+  }
 `;
 
 export const Services = styled.section`
@@ -609,6 +840,12 @@ export const Services = styled.section`
     cursor: pointer;
   }
 
+  & .btn-container {
+    @media (max-width: 480px) {
+      text-align: center;
+    }
+  }
+
   & .btn-container.white-btn button {
     background-color: #fff;
     transition: 0.3s ease;
@@ -617,6 +854,13 @@ export const Services = styled.section`
     :hover {
       color: #fff;
       background-color: #0e2b91;
+    }
+  }
+
+  & .btn-container.black-btn {
+    @media (max-width: 480px) {
+      padding-top: 24px;
+      padding-bottom: 254px;
     }
   }
 
@@ -634,6 +878,9 @@ export const Services = styled.section`
     background-image: url(/images/exchanges/purchases.png);
     background-repeat: no-repeat;
     background-position: 90% bottom;
+    @media (max-width: 480px) {
+      background-position: center bottom;
+    }
   }
 
   & button {
@@ -650,6 +897,20 @@ export const Services = styled.section`
     img {
       width: 100%;
     }
+
+    @media (max-width: 480px) {
+      position: relative;
+      img {
+        width: 240px;
+        height: 170px;
+        object-fit: contain;
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(-50%);
+        right: 50%;
+        margin-right: -120px;
+      }
+    }
   }
 
   & p {
@@ -658,11 +919,19 @@ export const Services = styled.section`
     min-height: 97px;
     transform: translateY(16px);
   }
+  @media (max-width: 480px) {
+    & ${LargeGapText} {
+      min-height: 278px;
+    }
+  }
 `;
 
 export const Help = styled.section`
   & .inner {
     padding: 64px 0 168px;
+    @media (max-width: 480px) {
+      padding: 16px 0;
+    }
   }
 
   & ${FlexBox} {
@@ -678,6 +947,10 @@ export const Help = styled.section`
     @media (max-width: 1899px) {
       min-height: 325px;
     }
+
+    @media (max-width: 480px) {
+      min-height: auto;
+    }
   }
 
   & ${Title} {
@@ -688,8 +961,19 @@ export const Help = styled.section`
 export const PhoneAd = styled.section`
   background: #f2f2f2;
 
+  @media (max-width: 480px) {
+    max-width: 300px;
+    margin: 0 auto;
+    ${Title} {
+      max-width: 90%;
+    }
+  }
+
   & .inner {
     padding: 48px 0;
+    @media (max-width: 480px) {
+      padding: 24px 12px;
+    }
   }
 
   & ul {
@@ -708,8 +992,32 @@ export const PhoneAd = styled.section`
     padding-bottom: 0;
   }
 
+  & .apps-container {
+    @media (max-width: 480px) {
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 334px;
+
+      & a {
+        margin-right: 0 !important;
+        height: 43px;
+        img {
+          height: 100%;
+        }
+      }
+    }
+  }
+
   & ${PageLink}:first-child {
     margin-right: 17px;
+  }
+
+  & .phone-ad-header {
+    @media (max-width: 480px) {
+      padding-right: 12px;
+      padding-left: 12px;
+    }
   }
 
   & .phone-ad-image {
@@ -720,6 +1028,19 @@ export const PhoneAd = styled.section`
 
       top: 50%;
       transform: translateY(-50%);
+      @media (max-width: 480px) {
+        top: auto;
+        bottom: -20%;
+        transform: translateY(20%);
+      }
+    }
+    @media (max-width: 480px) {
+      left: auto;
+      img {
+        width: 176px;
+        right: 50%;
+        margin-right: -82px;
+      }
     }
   }
 `;
@@ -732,7 +1053,7 @@ export const Converter = styled.div`
 
   & .convert-button {
     position: absolute;
-    padding: 13px;
+    padding: 7px;
     background: #f2f2f2;
     border-radius: 50%;
 
@@ -742,8 +1063,8 @@ export const Converter = styled.div`
 
     button {
       border-radius: 50%;
-      width: 61px;
-      height: 61px;
+      width: 33px;
+      height: 33px;
       outline: none;
       border: none;
       background: #1e2a41;
@@ -760,6 +1081,11 @@ export const Converter = styled.div`
         display: block;
         margin: 0 auto;
         background-repeat: no-repeat;
+        @media (max-width: 480px) {
+          width: 15px;
+          height: 15px;
+          background-size: 15px 15px;
+        }
       }
 
       :hover {
@@ -772,6 +1098,11 @@ export const Converter = styled.div`
     0% ( transfrom: rotate(-180deg);)
     100%( transform: rotate(180deg); )
   } 
+
+  @media (max-width: 480px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 `;
 
 export const ConverterInput = styled.div`
@@ -781,11 +1112,20 @@ export const ConverterInput = styled.div`
   padding: 24px 0 8px;
   border-bottom: 1px solid #737373;
 
+  @media (max-width: 480px) {
+    flex-direction: column;
+    border-bottom: none;
+  }
+
   & input {
     font-size: 1.25rem;
     padding: 0;
 
     min-width: 235px;
+    @media (max-width: 480px) {
+      font-size: 1.125rem;
+      border-bottom: 1px solid #737373;
+    }
   }
 
   & .currency-buttons {
@@ -803,6 +1143,22 @@ export const ConverterInput = styled.div`
     img.selected {
       opacity: 1;
       transform: scale(1.05);
+    }
+
+    @media (max-width: 480px) {
+      padding-top: 10px;
+      justify-content: flex-start;
+
+      img {
+        height: 16px;
+        padding: 0 10px;
+      }
+      img:first-child {
+        padding-left: 0;
+      }
+      img:last-child {
+        padding-right: 0;
+      }
     }
   }
 
@@ -831,6 +1187,12 @@ export const CurrencyExchange = styled.section`
   color: #303030;
   position: relative;
 
+  @media (max-width: 480px) {
+    & ${Title} {
+      font-size: 1.5rem;
+    }
+  }
+
   & .MuiTableCell-root {
     font-family: "Rubik", sans-serif;
   }
@@ -841,6 +1203,9 @@ export const CurrencyExchange = styled.section`
 
   & table {
     flex: 0 1 45%;
+    @media (max-width: 480px) {
+      margin-bottom: 28px;
+    }
   }
 
   & .currency-description {
@@ -884,6 +1249,15 @@ export const CurrencyExchange = styled.section`
 
   & ${Converter} {
     flex: 0 1 45%;
+    @media (max-width: 480px) {
+      padding: 24px 16px 24px 35px;
+
+      width: 277px;
+      margin: 0 0 0 auto;
+      ${Title} {
+        font-size: 1.125rem;
+      }
+    }
   }
 `;
 
@@ -891,9 +1265,42 @@ export const PageFooter = styled.footer`
   background: #f8f8f8;
   padding: 32px 0;
 
+  @media (max-width: 480px) {
+    padding: 8px 0 24px;
+  }
+
   & .footer-upper {
     border-bottom: 1px solid #bdbdbd;
     padding-bottom: 48px;
+    @media (max-width: 480px) {
+      border-bottom: none;
+      padding-bottom: 24px;
+    }
+  }
+
+  & ${FlexBox} {
+    .footer-item {
+      width: 100%;
+    }
+    .footer-item.hidden {
+      .link-container {
+        display: none;
+      }
+      ${Title} {
+        :after {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+
+  & .lower-item,
+  & .footer-icons {
+    margin: 0 auto;
+  }
+
+  & .footer-icons {
+    padding: 26px 0 42px;
   }
 
   & .footer-lower {
@@ -901,6 +1308,9 @@ export const PageFooter = styled.footer`
 
     .text {
       padding-right: 67px;
+      @media (max-width: 480px) {
+        padding-right: 0;
+      }
     }
     p {
       font-size: 0.875rem;
@@ -910,6 +1320,9 @@ export const PageFooter = styled.footer`
     .footer-icons a {
       display: inline-block;
       padding: 0 32px;
+      @media (max-width: 480px) {
+        padding: 0 16px;
+      }
     }
 
     button {
@@ -917,10 +1330,10 @@ export const PageFooter = styled.footer`
       border: none;
       border-box: 4px;
       outline: none;
-      padding: 15px 12px;
+      padding: 15px 16px;
       color: white;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       cursor: pointer;
 
       :after {
@@ -931,7 +1344,7 @@ export const PageFooter = styled.footer`
         height: 17px;
         display: inline-block;
         vertical-align: middle;
-        margin: 0 0 0 9px;
+        margin: 0 0 0 5px;
       }
     }
   }
@@ -941,11 +1354,38 @@ export const PageFooter = styled.footer`
 
     .link-container {
       min-width: 213px;
+      transition: 0.3s ease;
+      overflow-y: hidden;
     }
   }
 
   & ${Title} {
     padding-bottom: 20px;
+    @media (max-width: 480px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      :after {
+        background: url(/images/icons/arrow.svg);
+        transform: rotate(-180deg);
+        content: "";
+        display: block;
+        width: 12px;
+        height: 6px;
+        background-size: 12px 6px;
+      }
+    }
+  }
+
+  & .footer-item ${Title} {
+    @media (max-width: 480px) {
+      padding: 16px 0;
+      font-size: 0.875rem;
+      :last-child {
+        padding-bottom: 24px 0;
+      }
+    }
   }
 
   & ${PageLink} {
@@ -957,17 +1397,38 @@ export const PageFooter = styled.footer`
     font-weight: 400;
 
     :last-child {
-      padding-bottom: 0;
+      padding-bottom: 24px;
     }
 
     :hover {
       color: #9d2550;
       opacity: 1;
     }
+
+    @media (max-width: 480px) {
+      font-size: 0.75rem;
+    }
   }
 
   & .big-link {
     font-weight: 500;
     color: #0e2b91;
+    @media (max-width: 480px) {
+      :first-child {
+        text-align: center;
+      }
+    }
+  }
+`;
+
+export const SwitchContainer = styled.div`
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+export const SwitchContainerMobile = styled.div`
+  display: none;
+  @media (max-width: 480px) {
+    display: block;
   }
 `;

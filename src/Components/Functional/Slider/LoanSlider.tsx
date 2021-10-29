@@ -19,11 +19,11 @@ const LoanSlider = () => {
         onChange={handleAmountChange}
         valueLabelDisplay="auto"
         marks={[
-          { value: 600000, label: "10 000 ₸" },
-          { value: 8857000, label: "10 000 000 ₸" },
+          { value: min_value, label: "10 000 ₸" },
+          { value: max_value, label: "10 000 000 ₸" },
         ]}
       />
-      <p className="slider-selection">{`${amount
+      <p className="slider-selection selected">{`${amount
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, " ")} ${valuable}`}</p>
     </FlexBox>

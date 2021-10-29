@@ -1,9 +1,11 @@
 import React from "react";
+import { useWindowSize } from "../../../../utils/Hooks/useWindowsSize";
 import CardsRow from "../../../Cards/CardsRow";
 import CarouselSlide from "../../../CarouselSlide/CarouselSlide";
 import FunctionalCarousel from "../FunctionalCarousel";
 
 const CardCarousel = () => {
+  const size = useWindowSize();
   const cards = [
     { url: "/images/cards/classic.png", name: "Classic", price: "300 000 ₸" },
 
@@ -24,13 +26,25 @@ const CardCarousel = () => {
       infiniteLoop
     >
       <CarouselSlide className="card-carousel">
-        {<CardsRow cards={cards} />}
+        {
+          <CardsRow
+            cards={size.width && size.width > 640 ? cards : [cards[0]]}
+          />
+        }
       </CarouselSlide>
       <CarouselSlide className="card-carousel">
-        {<CardsRow cards={cards} />}
+        {
+          <CardsRow
+            cards={size.width && size.width > 640 ? cards : [cards[1]]}
+          />
+        }
       </CarouselSlide>
       <CarouselSlide className="card-carousel">
-        {<CardsRow cards={cards} />}
+        {
+          <CardsRow
+            cards={size.width && size.width > 640 ? cards : [cards[2]]}
+          />
+        }
       </CarouselSlide>
     </FunctionalCarousel>
   );

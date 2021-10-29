@@ -11,6 +11,7 @@ import CurrencyRow from "./CurrencyRow";
 
 const CurrencyTable = () => {
   const currency = useContext(CurrencyContext);
+  const sorted = currency.sort((a, b) => a.index - b.index);
   return (
     <Table>
       <TableHead>
@@ -26,7 +27,7 @@ const CurrencyTable = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {currency.map((row, index) => (
+        {sorted.map((row, index) => (
           <CurrencyRow
             name={row.name}
             icon={row.icon}

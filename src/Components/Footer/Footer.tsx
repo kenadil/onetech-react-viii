@@ -4,62 +4,73 @@ import {
   FlexBox,
   PageFooter,
   PageLink,
-  Title,
 } from "../../utils/Styled/main";
+import FooterItem from "./FooterItem";
+
+export type FooterItemProps = {
+  name: string;
+  links: string[];
+  bigIndex?: number;
+};
 
 const Footer = () => {
+  const bankLinks: FooterItemProps = {
+    name: "Банк",
+    links: [
+      "Кредиты",
+      "Карты",
+      "Депозиты",
+      "Переводы",
+      "Мобильное приложение",
+      "Тарифы",
+      "Сейфовые ячейки",
+    ],
+  };
+  const aboutUs: FooterItemProps = {
+    name: "О нас",
+    links: [
+      "Информация",
+      "Руководство",
+      "Отчетность",
+      "Документы",
+      "Контакты",
+      "Отделения и банкоматы",
+      "Отделения в период карантина",
+      "Вакансии",
+    ],
+  };
+  const news: FooterItemProps = {
+    name: "Новости",
+    links: ["Новости", "Пресс-релизы", "press@forte.bank"],
+    bigIndex: 2,
+  };
+  const other: FooterItemProps = {
+    name: "Дополнительно",
+    links: [
+      "Premier",
+      "International Relations",
+      "Реализация имущества",
+      "175-летие Абая",
+      "Apple Pay",
+      "Samsung Pay",
+      "ForteForex",
+      "Специальные возможности",
+    ],
+  };
   return (
     <PageFooter>
       <Container>
         <div className="inner">
           <div className="footer-upper">
             <FlexBox className="jscsp">
-              <div className="footer-item">
-                <Title fontSize="1rem">Банк</Title>
-                <div className="link-container">
-                  <PageLink>Кредиты</PageLink>
-                  <PageLink>Карты</PageLink>
-                  <PageLink>Депозиты</PageLink>
-                  <PageLink>Переводы</PageLink>
-                  <PageLink>Мобильное приложение</PageLink>
-                  <PageLink>Тарифы</PageLink>
-                  <PageLink>Сейфовые ячейки</PageLink>
-                </div>
-              </div>
-              <div className="footer-item">
-                <Title fontSize="1rem">О нас</Title>
-                <div className="link-container">
-                  <PageLink>Информация</PageLink>
-                  <PageLink>Руководство</PageLink>
-                  <PageLink>Отчетность</PageLink>
-                  <PageLink>Документы</PageLink>
-                  <PageLink>Контакты</PageLink>
-                  <PageLink>Отделения и банкоматы</PageLink>
-                  <PageLink>Отделения в периода карантина</PageLink>
-                  <PageLink>Вакансии</PageLink>
-                </div>
-              </div>
-              <div className="footer-item">
-                <Title fontSize="1rem">Новости</Title>
-                <div className="link-container">
-                  <PageLink>Новости</PageLink>
-                  <PageLink>Пресс-релизы</PageLink>
-                  <PageLink className="big-link">press@forte.bank</PageLink>
-                </div>
-              </div>
-              <div className="footer-item">
-                <Title fontSize="1rem">Дополнительно</Title>
-                <div className="link-container">
-                  <PageLink>Premier</PageLink>
-                  <PageLink>International Relations</PageLink>
-                  <PageLink>Реализация имущества</PageLink>
-                  <PageLink>175-летие Абая</PageLink>
-                  <PageLink>Apple Pay</PageLink>
-                  <PageLink>Samsung Pay</PageLink>
-                  <PageLink>ForteForex</PageLink>
-                  <PageLink>Специальные возможности</PageLink>
-                </div>
-              </div>
+              <FooterItem name={bankLinks.name} links={bankLinks.links} />
+              <FooterItem name={aboutUs.name} links={aboutUs.links} />
+              <FooterItem
+                name={news.name}
+                links={news.links}
+                bigIndex={news.bigIndex}
+              />
+              <FooterItem name={other.name} links={other.links} />
             </FlexBox>
           </div>
           <div className="footer-lower">

@@ -13,14 +13,16 @@ const MobileAd = () => {
         <div className="inner">
           <FlexBox className="jscsp">
             <div className="phone-ad-text">
-              <Title fontSize="1.25rem">
-                Попробуйте мобильное приложение Forte
-              </Title>
-              <ul>
-                <li>Оплата платежей</li>
-                <li>Денежные переводы</li>
-                <li>Управление лимитами</li>
-              </ul>
+              <div className="phone-ad-header">
+                <Title fontSize="1.25rem">
+                  Попробуйте мобильное приложение Forte
+                </Title>
+                <ul>
+                  <li>Оплата платежей</li>
+                  <li>Денежные переводы</li>
+                  <li>Управление лимитами</li>
+                </ul>
+              </div>
               <div className="jsccp apps-container">
                 <PageLink>
                   <img src="/images/icons/appstore.png" alt="appstore" />

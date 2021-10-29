@@ -2,6 +2,7 @@ import {
   Container,
   FlexBox,
   InfoCard,
+  LargeGapText,
   Services,
   Title,
 } from "../../utils/Styled/main";
@@ -18,7 +19,7 @@ const StaticCards = () => {
                   <Title fontSize="1.5rem">
                     Перевод с карты на любую карту мира
                   </Title>
-                  <p></p>
+                  <LargeGapText></LargeGapText>
                   <div className="btn-container white-btn">
                     <button>Подробнее</button>
                   </div>
@@ -38,7 +39,7 @@ const StaticCards = () => {
                   операторов и <br /> многое другое
                 </p>
                 <div className="btn-container black-btn">
-                  <button>Подробнее</button>
+                  <button>Произвести платеж</button>
                 </div>
               </div>
             </InfoCard>

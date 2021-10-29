@@ -28,11 +28,6 @@ const Exchange = () => {
 
   const currencies = ["USD_KZT", "EUR_KZT", "RUB_KZT", "GBP_KZT"];
   useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const fetchData = async () => {
     currencies.map((cur, index) =>
       fetch(
         `https://free.currconv.com/api/v7/convert?q=${cur}&compact=ultra&apiKey=4739c64b6e5b43aa6d6a`
@@ -44,12 +39,14 @@ const Exchange = () => {
             name: cur.substring(0, 3),
             value: num,
             icon: `/images/icons/${cur}.svg`,
+            index: index,
           };
           setCurrency((prevState) => [...prevState, curData]);
         })
         .catch((error) => console.log(error))
     );
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <CurrencyContext.Provider value={currency}>
       <CurrencyExchange>

@@ -51,11 +51,7 @@ const CurrencyConverter = () => {
       `https://free.currconv.com/api/v7/convert?q=${query}&compact=ultra&apiKey=4739c64b6e5b43aa6d6a`
     )
       .then((response) => response.json())
-      .then((data) =>
-        setSecondValue(
-          Math.round((data[query] * firstValue + Number.EPSILON) * 100) / 100
-        )
-      )
+      .then((data) => setSecondValue(Math.round(data[query] * firstValue)))
       .catch((error) => console.log(error));
   };
   return (
