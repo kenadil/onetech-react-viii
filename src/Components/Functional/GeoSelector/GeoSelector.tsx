@@ -3,7 +3,11 @@ import { HeaderSelect } from "../../../utils/Styled/main";
 import GeoIcon from "./GeoIcon";
 import { MenuItem } from "@mui/material";
 
-const GeoSelector = () => {
+type GeoSelectorProps = {
+  isModal?: boolean;
+};
+
+const GeoSelector = ({ isModal = false }: GeoSelectorProps) => {
   const locations = [
     { index: "city1", name: "Караганда" },
     { index: "city2", name: "Алматы" },
@@ -23,7 +27,7 @@ const GeoSelector = () => {
       className="reverse"
       value={location}
       onChange={handleChange}
-      IconComponent={() => <GeoIcon />}
+      IconComponent={isModal ? undefined : () => <GeoIcon />}
     >
       {locations.map((l, index) => (
         <MenuItem value={l.index} key={index}>

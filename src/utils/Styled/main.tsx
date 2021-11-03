@@ -1,3 +1,5 @@
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   FormControl,
   FormControlLabel,
@@ -5,6 +7,7 @@ import {
   Select,
   Slider,
 } from "@mui/material";
+import { Box } from "@mui/system";
 import styled from "styled-components";
 
 import { SlideProps, PageLinkProps, TextProps } from "../types/PaddingProps";
@@ -478,6 +481,7 @@ export const CardContainer = styled.section`
 export const Title = styled.h1<TextProps>`
   margin: 0;
   font-size: ${(p) => (p.fontSize ? p.fontSize : "1.875rem")};
+  padding: ${(p) => (p.padding ? p.padding : "0")};
   color: #1e2a41;
   font-weight: 500;
 `;
@@ -1053,23 +1057,31 @@ export const Converter = styled.div`
 
   & .convert-button {
     position: absolute;
-    padding: 7px;
+    padding: 14px;
     background: #f2f2f2;
     border-radius: 50%;
 
     top: 50%;
     transform: translateY(-50%);
     left: -8%;
+    @media (max-width: 480px) {
+      padding: 7px;
+    }
 
     button {
       border-radius: 50%;
-      width: 33px;
-      height: 33px;
+      width: 67px;
+      height: 67px;
       outline: none;
       border: none;
       background: #1e2a41;
       cursor: pointer;
       transition: .3s ease;
+
+      @media (max-width: 480px) {
+        width: 33px;
+        height: 33px;
+      }
 
       :after {
         background-position: center center;
@@ -1431,4 +1443,49 @@ export const SwitchContainerMobile = styled.div`
   @media (max-width: 480px) {
     display: block;
   }
+`;
+
+export const BurgerMenuIcon = styled(FontAwesomeIcon).attrs((props) => ({
+  icon: faBars,
+}))`
+  display: none;
+
+  @media (max-width: 480px) {
+    display: inline-block;
+    padding-right: 26px;
+    font-size: 1.5rem;
+    color: #9d2550;
+  }
+`;
+
+export const ModalBox = styled(Box)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 75%;
+
+  & ${HeaderSelect} {
+    display: block !important;
+  }
+
+  &
+    .css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input,
+  &
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding-right: 0;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  & .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input,
+  & .css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 14px 0;
+  }
+`;
+
+export const ModalContainer = styled.div`
+  width: 85%;
+  padding: 25px 0;
+  margin: 0 auto;
 `;
