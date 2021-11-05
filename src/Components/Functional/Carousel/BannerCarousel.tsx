@@ -4,8 +4,6 @@ import FunctionalCarousel from "./FunctionalCarousel";
 import { BannerList } from "../../../utils/types/PaddingProps";
 
 const BannerCarousel = ({ banners }: BannerList) => {
-  console.log(banners.length);
-
   return (
     <FunctionalCarousel
       showThumbs={false}

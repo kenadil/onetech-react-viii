@@ -4,6 +4,7 @@ import {
   PlainText,
   Title,
 } from "../../../../utils/Styled/main";
+import ExpressForm from "../../ExpressForm/ExpressForm";
 import ExpressPeriod from "../../ExpressPeriod/ExpressPeriod";
 import LoanSlider from "../../Slider/LoanSlider";
 import ExpressInput from "./ExpressInput";
@@ -42,6 +43,7 @@ const ExpressCalculator = () => {
         <ExpressResult />
         <ExpressSwitch />
       </FlexBox>
+      <ExpressForm />
     </ExpressCalculatorContainer>
   );
 };

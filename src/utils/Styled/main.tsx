@@ -173,7 +173,7 @@ export const PageLink = styled(Link)<PageLinkProps>`
   &.header-social,
   &.nav-links {
     text-decoration: none;
-    color: ${(p) => (p.activated ? "#9d2550" : "#303030")};
+    color: ${(p) => (p.activated === "true" ? "#9d2550" : "#303030")};
   }
   &.nav-links {
     font-size: 0.75rem;
@@ -1685,5 +1685,43 @@ export const PeriodButtons = styled.div`
 
   & button.active {
     opacity: 1;
+  }
+`;
+
+export const ExpressFormLayout = styled(FormControl)`
+  && {
+    width: 600px;
+    margin: 40px auto 0;
+  }
+
+  & fieldset {
+    background: #fff;
+  }
+
+  & label {
+    :after {
+      content: "*";
+      color: #9d2550;
+      display: inline;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+  }
+
+  & .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    font-weight: 500;
+  }
+
+  & .css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root,
+  & input {
+    z-index: 10;
+  }
+
+  & ${FlexBox} {
+    padding: 24px 0;
+
+    .MuiFormControl-root {
+      flex: 0 1 288px;
+    }
   }
 `;

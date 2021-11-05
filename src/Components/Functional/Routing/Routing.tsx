@@ -65,7 +65,7 @@ const Routing = ({ activeIndex }: RoutingListProps) => {
                 className="nav-links"
                 key={index}
                 background={n.icon}
-                activated={activeIndex === index}
+                activated={(activeIndex === index).toString()}
               >
                 <span>{n.name}</span>
               </PageLink>

@@ -19,8 +19,10 @@ const Eyecatcher = () => {
         <div className="inner">
           <Title fontSize="1.5rem">Получить кредит на выгодных условиях</Title>
           <FlexBox className="jscc">
-            {data.map((d) => (
-              <Condition background={d.iconUrl}>{d.text}</Condition>
+            {data.map((d, index) => (
+              <Condition key={index} background={d.iconUrl}>
+                {d.text}
+              </Condition>
             ))}
           </FlexBox>
 

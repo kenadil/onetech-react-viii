@@ -19,7 +19,7 @@ export interface SlideProps {
 
 export interface PageLinkProps {
   background?: string;
-  activated?: boolean;
+  activated?: string;
 }
 
 export interface BannerList {

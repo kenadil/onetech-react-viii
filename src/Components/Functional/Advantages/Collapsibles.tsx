@@ -19,8 +19,8 @@ const Collapsibles = () => {
   ];
   return (
     <CollapsiblesContainer>
-      {data.map((d) => (
-        <Collapsible q={d.q} a={d.a} icon={icon} />
+      {data.map((d, index) => (
+        <Collapsible key={index} q={d.q} a={d.a} icon={icon} />
       ))}
     </CollapsiblesContainer>
   );
