@@ -25,21 +25,21 @@ const CardCarousel = () => {
       dynamicHeight
       infiniteLoop
     >
-      <CarouselSlide className="card-carousel">
+      <CarouselSlide backgroundUrl={"#fff"} className="card-carousel">
         {
           <CardsRow
             cards={size.width && size.width > 640 ? cards : [cards[0]]}
           />
         }
       </CarouselSlide>
-      <CarouselSlide className="card-carousel">
+      <CarouselSlide backgroundUrl={"#fff"} className="card-carousel">
         {
           <CardsRow
             cards={size.width && size.width > 640 ? cards : [cards[1]]}
           />
         }
       </CarouselSlide>
-      <CarouselSlide className="card-carousel">
+      <CarouselSlide backgroundUrl={"#fff"} className="card-carousel">
         {
           <CardsRow
             cards={size.width && size.width > 640 ? cards : [cards[2]]}

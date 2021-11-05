@@ -5,6 +5,7 @@ import {
   FlexBox,
   ModalBox,
   ModalContainer,
+  PageLink,
   Title,
 } from "../../utils/Styled/main";
 import GeoSelector from "../Functional/GeoSelector/GeoSelector";
@@ -27,7 +28,9 @@ const Logo = ({ src }: LogoProps) => {
     <FlexBox className="jscfs">
       <BurgerMenuIcon onClick={handleOpen} />
       <div className="logo-container">
-        <img src={src} alt="logo-forte" />
+        <PageLink href={"/"}>
+          <img src={src} alt="logo-forte" />
+        </PageLink>
       </div>
       <Modal
         open={open}

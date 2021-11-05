@@ -5,45 +5,68 @@ import {
   PageLink,
 } from "../../../utils/Styled/main";
 
-const Routing = () => {
+type RoutingListProps = {
+  activeIndex?: number | undefined;
+};
+
+const Routing = ({ activeIndex }: RoutingListProps) => {
   const navigations = [
     {
-      url: "/images/icons/card.svg",
+      icon: "/images/icons/charity.svg",
+      name: "Кредиты",
+      url: "/deposits",
+    },
+    {
+      icon: "/images/icons/card.svg",
       name: "Карты",
+      url: "/404",
     },
     {
-      url: "/images/icons/deposits.svg",
+      icon: "/images/icons/deposits.svg",
       name: "Депозиты",
+      url: "/404",
     },
     {
-      url: "/images/icons/transfers.svg",
+      icon: "/images/icons/transfers.svg",
       name: "Переводы",
+      url: "/404",
     },
     {
-      url: "/images/icons/insurance.svg",
+      icon: "/images/icons/insurance.svg",
       name: "Insurance",
+      url: "/404",
     },
     {
-      url: "/images/icons/premium.svg",
+      icon: "/images/icons/premium.svg",
       name: "Premier",
+      url: "/404",
     },
     {
-      url: "/images/icons/forteFamily.svg",
+      icon: "/images/icons/forteFamily.svg",
       name: "ForteFamily",
+      url: "/404",
     },
 
     {
-      url: "/images/icons/contacts.svg",
+      icon: "/images/icons/contacts.svg",
       name: "Контакты",
+      url: "/404",
     },
   ];
+
   return (
     <Navigation>
       <Container>
         <div className="inner">
           <FlexBox className="jscc">
             {navigations.map((n, index) => (
-              <PageLink className="nav-links" key={index} background={n.url}>
+              <PageLink
+                href={n.url}
+                className="nav-links"
+                key={index}
+                background={n.icon}
+                activated={activeIndex === index}
+              >
                 <span>{n.name}</span>
               </PageLink>
             ))}

@@ -12,7 +12,9 @@ import styled from "styled-components";
 
 import { SlideProps, PageLinkProps, TextProps } from "../types/PaddingProps";
 
-export const PageWrapper = styled.div`
+export const PageWrapper = styled.div.attrs((props) => ({
+  className: "App",
+}))`
   min-height: 100%;
   & p,
   & h1,
@@ -170,7 +172,7 @@ export const PageLink = styled(Link)<PageLinkProps>`
   &.header-social,
   &.nav-links {
     text-decoration: none;
-    color: #303030;
+    color: ${(p) => (p.activated ? "#9d2550" : "#303030")};
   }
   &.nav-links {
     font-size: 0.75rem;
@@ -190,7 +192,7 @@ export const PageLink = styled(Link)<PageLinkProps>`
     vertical-align: middle;
   }
   header & > span {
-    color: #303030;
+    color: ${(p) => (p.activated ? "#9d2550" : "#303030")};
     font-weight: 400;
     text-decoration: none;
     font-size: 0.875rem;
@@ -351,7 +353,7 @@ export const Banner = styled.section`
 `;
 
 export const Slide = styled.div<SlideProps>`
-  background: ${(p) => (p.background ? "url(" + p.background + ")" : "none")};
+  background: ${(p) => (p.background ? p.background : "#F2F2F2")};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -365,7 +367,7 @@ export const Slide = styled.div<SlideProps>`
   & .inner {
     padding: 31px 0;
     text-align: ${(p) => (p.textAlign ? p.textAlign : "left")} !important;
-    color: white;
+    color: ${(p) => (p.background ? "white" : "#303030")};
     font-weight: 300;
     min-height: 400px;
     @media (max-width: 480px) {
@@ -383,8 +385,8 @@ export const Slide = styled.div<SlideProps>`
 
   & span > a {
     text-decoration: none;
-    border-bottom: 1px dotted #fff;
-    color: white;
+    border-bottom: 1px dotted ${(p) => (p.background ? "white" : "#303030")};
+    color: ${(p) => (p.background ? "white" : "#303030")};
   }
 
   & h3 {
@@ -414,8 +416,8 @@ export const Slide = styled.div<SlideProps>`
     border: none;
     border-radius: 4px;
     font-weight: 500;
-    background: #fff;
-    color: #9d2550;
+    background: ${(p) => (p.background ? "white" : "#9d2550")};
+    color: ${(p) => (p.background ? "#9d2550" : "white")};
     transition: 0.3s linear;
     cursor: pointer;
     @media (max-width: 480px) {
@@ -424,8 +426,8 @@ export const Slide = styled.div<SlideProps>`
   }
 
   & button:hover {
-    background: #9d2550;
-    color: #fff;
+    background: ${(p) => (p.background ? "#9d2550" : "white")};
+    color: ${(p) => (p.background ? "white" : "#9d2550")};
   }
 
   &.card-carousel .inner {
@@ -1295,8 +1297,10 @@ export const PageFooter = styled.footer`
       width: 100%;
     }
     .footer-item.hidden {
-      .link-container {
-        display: none;
+      @media (max-width: 480px) {
+        .link-container {
+          display: none;
+        }
       }
       ${Title} {
         :after {

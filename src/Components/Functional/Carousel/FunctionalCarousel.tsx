@@ -2,6 +2,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const FunctionalCarousel = ({
+  showIndicators,
   showThumbs,
   showStatus,
   dynamicHeight,
@@ -11,6 +12,7 @@ const FunctionalCarousel = ({
 }: any) => {
   return (
     <Carousel
+      showIndicators={showIndicators}
       showThumbs={showThumbs}
       showStatus={showStatus}
       dynamicHeight={dynamicHeight}

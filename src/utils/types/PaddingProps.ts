@@ -12,8 +12,20 @@ export interface TextProps {
 export interface SlideProps {
   textAlign?: string;
   background?: string;
+  colored?: boolean;
 }
 
 export interface PageLinkProps {
   background?: string;
+  activated?: boolean;
 }
+
+export interface BannerList {
+  banners: Banner[];
+}
+
+// types
+export type Banner = {
+  url: string | undefined;
+  children: React.ReactNode;
+};
