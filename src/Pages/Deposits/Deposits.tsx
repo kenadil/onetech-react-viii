@@ -1,3 +1,6 @@
+import Advantages from "../../Components/Advantages/Advantages";
+import Express from "../../Components/Express/Express";
+import Eyecatcher from "../../Components/Eyecatcher/Eyecatcher";
 import BannerCarousel from "../../Components/Functional/Carousel/BannerCarousel";
 import Routing from "../../Components/Functional/Routing/Routing";
 import Header from "../../Components/Header/Header";
@@ -43,6 +46,9 @@ const Deposits = () => {
       <Banner>
         <BannerCarousel banners={bannerList.banners} />
       </Banner>
+      <Eyecatcher />
+      <Advantages />
+      <Express />
     </Content>
   );
 };

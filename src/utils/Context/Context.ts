@@ -5,7 +5,10 @@ interface ILoanContext {
   duration: number | string | Array<number | string>;
   discountCheck: boolean;
   handleAmountChange?: (event: Event, newValue: number | number[]) => void;
-  handleDurationChange?: (event: Event, newValue: number | number[]) => void;
+  handleDurationChange?: (
+    event: Event | React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined,
+    newValue: number | number[]
+  ) => void;
   handleCheckDiscount?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

@@ -7,6 +7,8 @@ export interface TextProps {
   textAlign?: string;
   fontWeight?: string;
   padding?: string;
+  activated?: boolean;
+  icon?: string;
 }
 
 export interface SlideProps {

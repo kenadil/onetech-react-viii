@@ -6,6 +6,7 @@ import {
   Link,
   Select,
   Slider,
+  TextField,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import styled from "styled-components";
@@ -485,7 +486,8 @@ export const Title = styled.h1<TextProps>`
   font-size: ${(p) => (p.fontSize ? p.fontSize : "1.875rem")};
   padding: ${(p) => (p.padding ? p.padding : "0")};
   color: #1e2a41;
-  font-weight: 500;
+  font-weight: ${(p) => (p.fontWeight ? p.fontWeight : "500")};
+  ${(p) => p.textAlign && `text-align: ${p.textAlign}`}
 `;
 
 export const Card = styled.div`
@@ -1492,4 +1494,196 @@ export const ModalContainer = styled.div`
   width: 85%;
   padding: 25px 0;
   margin: 0 auto;
+`;
+
+export const ConditionsInfo = styled.div`
+  text-align: center;
+
+  & .inner {
+    padding: 64px 0;
+    width: 567px;
+    margin: 0 auto;
+  }
+`;
+
+export const Condition = styled.span<PageLinkProps>`
+  flex: 0 1 30%;
+  padding: 39px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    background-image: ${(p) =>
+      p.background ? `url(${p.background})` : "none"};
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 16px;
+    background-repeat: no-repeat;
+  }
+`;
+
+export const PlainText = styled.p<TextProps>`
+  color: ${(p) => (p.color ? p.color : "#303030")};
+  padding: ${(p) => (p.padding ? p.padding : "0")};
+  font-size: ${(p) => (p.fontSize ? p.fontSize : "1rem")};
+  font-weight: ${(p) => (p.fontWeight ? p.fontWeight : "normal")};
+  ${(p) => (p.textAlign ? `text-align: ${p.textAlign};` : "")}
+  &:after {
+    transform: ${(p) => (p.activated ? "rotate(180deg)" : "rotate(0deg)")};
+    background: ${(p) => (p.icon ? `url(${p.icon})` : "none")};
+  }
+`;
+
+export const AdvantagesContainer = styled.div`
+  & .inner {
+    padding: 0 0 65px;
+  }
+`;
+
+export const CollapsiblesContainer = styled.div`
+  padding: 32px 0 0;
+
+  & ${PlainText} {
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    :after {
+      transition: 0.3s ease-out;
+      display: inline-block;
+      content: "";
+      width: 12px;
+      height: 6px;
+    }
+  }
+
+  & .css-smkl36-MuiCollapse-wrapper {
+    padding: 0 20px 20px;
+  }
+`;
+
+export const ExpressContainer = styled.div`
+  padding: 0 0 64px;
+  & .inner {
+    padding: 0;
+    text-align: center;
+  }
+`;
+
+export const ExpressSwitchContainer = styled.div`
+  background: rgba(224, 224, 224, 0.6);
+  padding: 16px 15px;
+  box-sizing: border-box;
+  & .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+    text-align: left;
+  }
+
+  & ${IncomeSwitch} {
+    padding: 0px;
+  }
+`;
+
+export const ExpressCalculatorContainer = styled.div`
+  max-width: 868px;
+  margin: 0 auto;
+  background: #f2f2f2;
+  box-sizing: border-box;
+  padding: 40px 82px;
+
+  & .slider-selection {
+    display: none;
+  }
+
+  & ${CalculatorSlider} {
+    flex: 0 1 100%;
+  }
+
+  & ${FlexBox} {
+    padding: 0 0 8px;
+  }
+  & .currency-symbol {
+    position: relative;
+    display: inline;
+    font-size: 1.5rem;
+
+    span {
+      position: absolute;
+      top: 46%;
+      right: 14px;
+    }
+  }
+
+  & hr {
+    margin: 40px 0 21px;
+  }
+
+  & .express-result {
+    padding-right: 20px;
+    width: 60%;
+  }
+
+  & .inner {
+    text-align: left;
+    .month-pay,
+    .reward-pay {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding-bottom: 24px;
+      font-size: 0.875rem;
+      .result {
+        font-size: 1.5rem;
+        width: 142px;
+        font-weight: 500;
+      }
+    }
+    .reward-pay {
+      padding-bottom: 0;
+    }
+  }
+`;
+
+export const ExpressInputContainer = styled(TextField)`
+  & input {
+    text-align: right;
+    display: block;
+    padding: 11px 36px 11px 9px;
+    border: none;
+    outline: none;
+    max-width: 172px;
+    background: #fff;
+    font-size: 1.5rem;
+  }
+`;
+
+export const PeriodButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & button {
+    opacity: 0.4;
+    background: #9d2550;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 1.125rem;
+    padding: 9px 0;
+    width: 70px;
+    cursor: pointer;
+    :hover {
+      opacity: 0.2;
+    }
+  }
+
+  & button.active {
+    opacity: 1;
+  }
 `;

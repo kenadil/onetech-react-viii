@@ -1,12 +1,12 @@
 import { useState } from "react";
 import LoanContext from "../../utils/Context/Context";
-import { Container, LoanContainer, Title } from "../../utils/Styled/main";
-import Calculator from "../Calculator/Calculator";
+import { Container, ExpressContainer, Title } from "../../utils/Styled/main";
+import ExpressCalculator from "../Functional/Calculator/ExpressCalculator/ExpressCalculator";
 
-const Loans = () => {
+const Express = () => {
   const [amount, setAmount] = useState<
     number | string | Array<number | string>
-  >(150000);
+  >(1500000);
 
   const [duration, setDuration] = useState<
     number | string | Array<number | string>
@@ -39,19 +39,18 @@ const Loans = () => {
         handleCheckDiscount,
       }}
     >
-      <LoanContainer>
+      <ExpressContainer>
         <Container>
           <div className="inner">
-            <Title>Кредиты на любые цели</Title>
-            <h4 className="loans-description">
-              Предварительный расчет не является публичной офертой
-            </h4>
-            <Calculator />
+            <Title fontSize="1.5rem" padding="0 0 25px">
+              Рассчитать Экспресс-кредит
+            </Title>
+            <ExpressCalculator />
           </div>
         </Container>
-      </LoanContainer>
+      </ExpressContainer>
     </LoanContext.Provider>
   );
 };
 
-export default Loans;
+export default Express;
