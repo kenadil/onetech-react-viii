@@ -4,6 +4,7 @@ import {
   FormControl,
   FormControlLabel,
   Link,
+  Modal,
   Select,
   Slider,
   TextField,
@@ -1724,4 +1725,83 @@ export const ExpressFormLayout = styled(FormControl)`
       flex: 0 1 288px;
     }
   }
+
+  & button[type="submit"] {
+    transition: 0.3s ease;
+    border-radius: 4px;
+    width: 206px;
+    padding: 14px 0;
+    border: none;
+    outline: none;
+
+    background: #9d2550;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    :hover {
+      color: #9d2550;
+      background: #fff;
+    }
+  }
+  & button [disabled],
+  & button:disabled {
+    color: #737373;
+    background: #e0e0e0;
+    cursor: not-allowed;
+    :hover {
+      color: #737373;
+      background: #e0e0e0;
+    }
+  }
 `;
+
+export const ExpressOffer = styled.div`
+  text-align: left;
+
+  & span {
+    color: blue;
+    text-decoration: underline;
+    transition: 0.3s ease-out;
+
+    cursor: pointer;
+    :hover {
+      text-shadow: 0px 0px 1px #9d2550;
+      color: #9d2550;
+    }
+  }
+`;
+
+export const ExpressOfferModal = styled(Modal)`
+  & ${Container} {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    outline: none;
+  }
+
+  & .inner {
+    padding: 20px;
+  }
+
+  & ${FlexBox} {
+    padding: 0 30px 20px;
+  }
+
+  & ${PlainText} {
+    padding: 0 10px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  & p[data-aria-label="incompatible"] {
+    padding: 0 30px;
+  }
+`;
+
+export const PdfViewer = styled.object.attrs({
+  width: "100%",
+  height: "500",
+  type: "application/pdf",
+})``;

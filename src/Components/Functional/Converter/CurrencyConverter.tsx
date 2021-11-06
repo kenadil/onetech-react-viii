@@ -36,9 +36,9 @@ const CurrencyConverter = () => {
   const [secondValue, setSecondValue] = useState(0);
   const handleFirstValueChange = (e: any) => {
     const onlyNums = e.target.value.replace(/[^0-9]/g, "");
-    if (onlyNums.length < 10) {
+    if (onlyNums.length < 13) {
       setFirstValue(parseInt(onlyNums) || 0);
-    } else if (onlyNums.length === 10) {
+    } else if (onlyNums.length === 13) {
       const number = onlyNums.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
       setFirstValue(parseInt(number) || 0);
     }
