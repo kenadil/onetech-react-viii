@@ -119,6 +119,7 @@ const ExpressForm = () => {
           ИИН
         </InputLabel>
         <OutlinedInput
+          autoComplete="off"
           error={errors["id"]}
           name="id"
           id="outlined-password-input"
@@ -161,6 +162,7 @@ const ExpressForm = () => {
             id="outlined-income-amount"
             label="Основной ежемесяч. доход, ₸ "
             variant="outlined"
+            autoComplete="off"
             value={
               values.incomes
                 ? values.incomes
