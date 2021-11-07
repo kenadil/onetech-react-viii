@@ -1,11 +1,12 @@
 import {
+  FormHelperText,
   IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ExpressFormLayout, FlexBox } from "../../../utils/Styled/main";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -13,6 +14,7 @@ import InputMask from "react-input-mask";
 import { idOfLength } from "../../../utils/types/CheckLength";
 import ExpressInfo from "./ExpressInfo";
 import OfferModal from "./OfferModal";
+import LoanContext from "../../../utils/Context/Context";
 
 type ValueState = {
   id: string;
@@ -29,6 +31,8 @@ type ErrorsState = {
 const maxValue = 12;
 
 const ExpressForm = () => {
+  const { amount, duration, discountCheck } = useContext(LoanContext);
+
   const [showPassword, setShowPassword] = useState(false);
   const [values, setValues] = useState<ValueState>({
     id: "",
@@ -56,6 +60,7 @@ const ExpressForm = () => {
         ...prevState,
         [prop]: values[prop].length === 0,
       }));
+
       const onlyNums = event.target.value.replace(/[^0-9]/g, "");
       try {
         idOfLength(onlyNums, maxValue);
@@ -66,6 +71,8 @@ const ExpressForm = () => {
       } catch {
         setValues({ ...values, [prop]: onlyNums.substring(0, maxValue) });
       }
+      if ([prop][0] === "id")
+        setErrors((prevState) => ({ ...prevState, id: onlyNums.length < 12 }));
     };
 
   const handleMaskChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,7 +107,6 @@ const ExpressForm = () => {
   };
 
   const validateForm = (errors: ErrorsState) => {
-    console.log(errors);
     if (errors.id || errors.phoneNumber || errors.incomes) {
       return;
     }
@@ -112,6 +118,20 @@ const ExpressForm = () => {
     setValues({ id: "", phoneNumber: "", incomes: "" });
   };
 
+  useEffect(() => {
+    const value = parseInt(values.incomes);
+    const resultAmount =
+      typeof amount === "number" && typeof duration === "number"
+        ? Math.round(
+            amount / duration +
+              (amount / duration) * (discountCheck ? 0.1499 : 0.1699 + 0.217)
+          )
+        : 0;
+    setErrors((prevState) => ({
+      ...prevState,
+      incomes: value === 0 || value < resultAmount,
+    }));
+  }, [values.incomes, amount, discountCheck, duration]);
   return (
     <form onSubmit={handleSubmit}>
       <ExpressFormLayout>
@@ -139,6 +159,11 @@ const ExpressForm = () => {
             </InputAdornment>
           }
         />
+        {errors.id && (
+          <FormHelperText error id="accountId-error">
+            * Обязательно к заполнению, не может быть меньше 12 символов
+          </FormHelperText>
+        )}
         <FlexBox className="jscsp">
           <InputMask
             name="phoneNumber"
@@ -149,6 +174,9 @@ const ExpressForm = () => {
             {() => (
               <TextField
                 error={errors["phoneNumber"]}
+                helperText={
+                  errors["phoneNumber"] && "* Обязательно к заполнению"
+                }
                 id="outlined-phone-number"
                 label="Номер телефона"
                 variant="outlined"
@@ -163,6 +191,10 @@ const ExpressForm = () => {
             label="Основной ежемесяч. доход, ₸ "
             variant="outlined"
             autoComplete="off"
+            helperText={
+              errors.incomes &&
+              "* Обязательно к заполнению, не должно быть меньше ежемесячного платежа"
+            }
             value={
               values.incomes
                 ? values.incomes
@@ -184,7 +216,22 @@ const ExpressForm = () => {
       <OfferModal
         open={open}
         handleClose={handleClose}
-        nodes={JSON.stringify(values)}
+        nodes={JSON.stringify({
+          credentials: values,
+          deposit: {
+            amount: amount,
+            period: duration,
+            discount: discountCheck,
+            monthPay:
+              typeof amount === "number" && typeof duration === "number"
+                ? Math.round(
+                    amount / duration +
+                      (amount / duration) *
+                        (discountCheck ? 0.1499 : 0.1699 + 0.217)
+                  )
+                : 0,
+          },
+        })}
       />
     </form>
   );

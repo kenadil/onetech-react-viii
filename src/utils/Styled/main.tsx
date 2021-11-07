@@ -1578,6 +1578,7 @@ export const ExpressContainer = styled.div`
 `;
 
 export const ExpressSwitchContainer = styled.div`
+  border-radius: 4px;
   background: rgba(224, 224, 224, 0.6);
   padding: 16px 15px;
   box-sizing: border-box;
@@ -1591,6 +1592,7 @@ export const ExpressSwitchContainer = styled.div`
 `;
 
 export const ExpressCalculatorContainer = styled.div`
+  border-radius: 4px;
   max-width: 868px;
   margin: 0 auto;
   background: #f2f2f2;
@@ -1720,6 +1722,7 @@ export const ExpressFormLayout = styled(FormControl)`
 
   & ${FlexBox} {
     padding: 24px 0;
+    align-items: flex-start;
 
     .MuiFormControl-root {
       flex: 0 1 288px;
@@ -1805,3 +1808,5 @@ export const PdfViewer = styled.object.attrs({
   height: "500",
   type: "application/pdf",
 })``;
+
+export const ErrorText = styled.p``;
