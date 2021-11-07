@@ -1,4 +1,5 @@
 import Advantages from "../../Components/Advantages/Advantages";
+import DepositConditions from "../../Components/DepositConditions/DepositConditions";
 import Express from "../../Components/Express/Express";
 import Eyecatcher from "../../Components/Eyecatcher/Eyecatcher";
 import BannerCarousel from "../../Components/Functional/Carousel/BannerCarousel";
@@ -49,6 +50,7 @@ const Deposits = () => {
       <Eyecatcher />
       <Advantages />
       <Express />
+      <DepositConditions />
     </Content>
   );
 };

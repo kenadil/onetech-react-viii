@@ -1548,6 +1548,7 @@ export const AdvantagesContainer = styled.div`
 
 export const CollapsiblesContainer = styled.div`
   padding: 32px 0 0;
+  cursor: pointer;
 
   & ${PlainText} {
     border-top: 1px solid #e0e0e0;
@@ -1593,7 +1594,7 @@ export const ExpressSwitchContainer = styled.div`
 
 export const ExpressCalculatorContainer = styled.div`
   border-radius: 4px;
-  max-width: 868px;
+  max-width: 808px;
   margin: 0 auto;
   background: #f2f2f2;
   box-sizing: border-box;
@@ -1628,7 +1629,7 @@ export const ExpressCalculatorContainer = styled.div`
 
   & .express-result {
     padding-right: 20px;
-    width: 60%;
+    width: 70%;
   }
 
   & .inner {
@@ -1643,7 +1644,6 @@ export const ExpressCalculatorContainer = styled.div`
       font-size: 0.875rem;
       .result {
         font-size: 1.5rem;
-        width: 142px;
         font-weight: 500;
       }
     }
@@ -1809,4 +1809,61 @@ export const PdfViewer = styled.object.attrs({
   type: "application/pdf",
 })``;
 
-export const ErrorText = styled.p``;
+export const ConditionsContainer = styled.div`
+  & ${FlexBox} {
+    &.conditions-changer {
+      max-width: 916px;
+      margin: 0 auto;
+    }
+  }
+  & button {
+    width: 180px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+
+    padding: 16px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    :hover {
+      opacity: 0.5;
+      color: white;
+      background: #1e2a41;
+    }
+    &.active-btn {
+      color: white;
+      background: #1e2a41;
+      :hover {
+        opacity: 1;
+      }
+    }
+  }
+`;
+
+export const ConditionsCardItem = styled.div`
+  flex: 0 1 49%;
+  background: #f2f2f2;
+`;
+
+export const ConditionsCardHeader = styled.div`
+  background: rgba(224, 224, 224, 0.6);
+  padding: 16px 32px;
+`;
+
+export const ConditionsCardBody = styled.div`
+  padding: 24px 32px;
+
+  & ${PlainText} {
+    & span {
+      color: blue;
+      text-decoration: underline;
+      transition: 0.3s ease-out;
+
+      cursor: pointer;
+      :hover {
+        text-shadow: 0px 0px 1px #9d2550;
+        color: #9d2550;
+      }
+    }
+  }
+`;
