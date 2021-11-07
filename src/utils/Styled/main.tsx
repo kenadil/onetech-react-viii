@@ -1538,6 +1538,18 @@ export const PlainText = styled.p<TextProps>`
     transform: ${(p) => (p.activated ? "rotate(180deg)" : "rotate(0deg)")};
     background: ${(p) => (p.icon ? `url(${p.icon})` : "none")};
   }
+  & span,
+  & a {
+    color: blue;
+    text-decoration: underline;
+    transition: 0.3s ease-out;
+
+    cursor: pointer;
+    :hover {
+      text-shadow: 0px 0px 1px #9d2550;
+      color: #9d2550;
+    }
+  }
 `;
 
 export const AdvantagesContainer = styled.div`
@@ -1809,7 +1821,7 @@ export const PdfViewer = styled.object.attrs({
   type: "application/pdf",
 })``;
 
-export const ConditionsContainer = styled.div`
+export const ConditionsContainer = styled.section`
   & ${FlexBox} {
     &.conditions-changer {
       max-width: 916px;
@@ -1843,6 +1855,9 @@ export const ConditionsContainer = styled.div`
 export const ConditionsCardItem = styled.div`
   flex: 0 1 49%;
   background: #f2f2f2;
+
+  overflow: hidden;
+  border-radius: 4px;
 `;
 
 export const ConditionsCardHeader = styled.div`
@@ -1865,5 +1880,36 @@ export const ConditionsCardBody = styled.div`
         color: #9d2550;
       }
     }
+  }
+`;
+
+export const Requirements = styled.section`
+  & .inner {
+    padding: 64px 0;
+  }
+
+  & ${Title} {
+    height: 56px;
+  }
+
+  & ${PlainText} {
+    max-width: 328px;
+    line-height: 20px;
+  }
+`;
+
+export const DocsRequirement = styled.p<SlideProps>`
+  font-size: 0.875rem;
+  padding-bottom: 16px;
+  &:before {
+    content: "";
+    background: url(${(p) => (p.background ? p.background : "none")});
+    background-size: 12px 10px;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
   }
 `;

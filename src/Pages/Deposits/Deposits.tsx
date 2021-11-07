@@ -5,6 +5,7 @@ import Eyecatcher from "../../Components/Eyecatcher/Eyecatcher";
 import BannerCarousel from "../../Components/Functional/Carousel/BannerCarousel";
 import Routing from "../../Components/Functional/Routing/Routing";
 import Header from "../../Components/Header/Header";
+import Docs from "../../Components/Requirements/Docs";
 import {
   Content,
   Banner,
@@ -51,6 +52,7 @@ const Deposits = () => {
       <Advantages />
       <Express />
       <DepositConditions />
+      <Docs />
     </Content>
   );
 };
