@@ -1,11 +1,11 @@
-import { Container } from "@mui/material";
-import { AdvantagesContainer, Title } from "../../utils/Styled/main";
+import { QAContainer, Container, Title } from "../../utils/Styled/main";
 import Collapsibles, {
   CollapsiblesProps,
 } from "../Functional/Advantages/Collapsibles";
 
-const Advantages = () => {
-  const icon = "/images/icons/arrow.svg";
+const QA = () => {
+  const icon = "/images/icons/union.svg";
+  const activatedIcon = "/images/icons/line.svg";
   const data: CollapsiblesProps[] = [
     {
       q: "Без залога и на любые цели",
@@ -21,15 +21,15 @@ const Advantages = () => {
     },
   ];
   return (
-    <AdvantagesContainer>
+    <QAContainer>
       <Container>
         <div className="inner">
-          <Title fontSize="1.5rem">Преимущества экспресс-кредита</Title>
-          <Collapsibles data={data} icon={icon} />
+          <Title>Частые вопросы про кредит</Title>
+          <Collapsibles data={data} icon={icon} activatedIcon={activatedIcon} />
         </div>
       </Container>
-    </AdvantagesContainer>
+    </QAContainer>
   );
 };
 
-export default Advantages;
+export default QA;

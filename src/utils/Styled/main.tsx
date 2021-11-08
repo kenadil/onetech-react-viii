@@ -1582,6 +1582,22 @@ export const CollapsiblesContainer = styled.div`
   }
 `;
 
+export const QAContainer = styled.div`
+  & .inner {
+    padding: 64px 0;
+  }
+
+  & ${PlainText} {
+    :after {
+      width: 14px;
+      height: 14px;
+      background-size: 14px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+`;
+
 export const ExpressContainer = styled.div`
   padding: 0 0 64px;
   & .inner {
@@ -1911,5 +1927,25 @@ export const DocsRequirement = styled.p<SlideProps>`
     display: inline-block;
     margin-right: 6px;
     vertical-align: middle;
+  }
+`;
+
+export const EyecatcherCards = styled.section`
+  & ${Title} {
+    padding: 0 0 24px;
+  }
+  & ${Card} {
+    box-sizing: border-box;
+    flex: 0 1 32%;
+    background: #f5f5f5;
+    padding: 24px;
+
+    ${PlainText} {
+      text-align: left;
+      padding-bottom: 24px;
+      :last-child {
+        padding-bottom: 0;
+      }
+    }
   }
 `;

@@ -6,9 +6,10 @@ type CollapsibleProps = {
   q: string;
   a: string;
   icon: string;
+  activatedIcon?: string;
 };
 
-const Collapsible = ({ q, a, icon }: CollapsibleProps) => {
+const Collapsible = ({ q, a, icon, activatedIcon }: CollapsibleProps) => {
   const [checked, setChecked] = useState(false);
 
   const handleClick = () => setChecked((prev) => !prev);
@@ -18,7 +19,7 @@ const Collapsible = ({ q, a, icon }: CollapsibleProps) => {
         fontWeight={"500"}
         padding={"25px 20px"}
         activated={checked}
-        icon={icon}
+        icon={checked && activatedIcon ? activatedIcon : icon}
       >
         {q}
       </PlainText>

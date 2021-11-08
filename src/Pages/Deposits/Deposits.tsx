@@ -1,4 +1,5 @@
 import Advantages from "../../Components/Advantages/Advantages";
+import Cards from "../../Components/Eyecatcher/Cards";
 import DepositConditions from "../../Components/DepositConditions/DepositConditions";
 import Express from "../../Components/Express/Express";
 import Eyecatcher from "../../Components/Eyecatcher/Eyecatcher";
@@ -15,6 +16,7 @@ import {
   VisualImage,
 } from "../../utils/Styled/main";
 import { BannerList } from "../../utils/types/PaddingProps";
+import QA from "../../Components/QuestionsAndAnswers/QA";
 
 const Deposits = () => {
   const history = (
@@ -53,6 +55,8 @@ const Deposits = () => {
       <Express />
       <DepositConditions />
       <Docs />
+      <Cards />
+      <QA />
     </Content>
   );
 };
