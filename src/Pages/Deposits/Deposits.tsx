@@ -44,7 +44,7 @@ const Deposits = () => {
     ],
   };
   return (
-    <Content>
+    <Content className="deposits-page">
       <Header />
       <Routing activeIndex={0} />
       <Banner>

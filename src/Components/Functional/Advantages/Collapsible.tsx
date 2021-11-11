@@ -1,6 +1,5 @@
-import { Collapse } from "@mui/material";
 import { useState } from "react";
-import { PlainText } from "../../../utils/Styled/main";
+import { PlainText, CollapseItem } from "../../../utils/Styled/main";
 
 type CollapsibleProps = {
   q: string;
@@ -21,9 +20,9 @@ const Collapsible = ({ q, a, icon, activatedIcon }: CollapsibleProps) => {
         activated={checked}
         icon={checked && activatedIcon ? activatedIcon : icon}
       >
-        {q}
+        <span>{q}</span>
       </PlainText>
-      <Collapse in={checked}>{a}</Collapse>
+      <CollapseItem in={checked}>{a}</CollapseItem>
     </div>
   );
 };

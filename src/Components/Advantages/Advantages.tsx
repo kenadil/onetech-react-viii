@@ -1,5 +1,4 @@
-import { Container } from "@mui/material";
-import { AdvantagesContainer, Title } from "../../utils/Styled/main";
+import { AdvantagesContainer, Title, Container } from "../../utils/Styled/main";
 import Collapsibles, {
   CollapsiblesProps,
 } from "../Functional/Advantages/Collapsibles";

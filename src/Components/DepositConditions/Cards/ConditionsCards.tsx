@@ -1,3 +1,4 @@
+import { useWindowSize } from "../../../utils/Hooks/useWindowsSize";
 import { FlexBox, Title } from "../../../utils/Styled/main";
 import ConditionsCard from "./ConditionsCard";
 
@@ -12,11 +13,13 @@ export type ConditionsCardProps = {
 };
 
 const ConditionsCards = () => {
+  const { width } = useWindowSize();
   const cards: ConditionsCardProps[] = [
     {
       title: (
-        <Title fontSize="1.25rem">
-          Минимальная ставка по кредиту <br />с комиссиями
+        <Title fontSize={width && width > 480 ? "1.25rem" : "1.125rem"}>
+          Минимальная ставка по кредиту {width && width > 480 ? <br /> : ""}с
+          комиссиями
         </Title>
       ),
       rows: [
@@ -34,8 +37,8 @@ const ConditionsCards = () => {
     },
     {
       title: (
-        <Title fontSize="1.25rem">
-          Стандартная ставка по кредиту <br />
+        <Title fontSize={width && width > 480 ? "1.25rem" : "1.125rem"}>
+          Стандартная ставка по кредиту {width && width > 480 ? <br /> : ""}
           без комиссий
         </Title>
       ),

@@ -1,3 +1,4 @@
+import { useWindowSize } from "../../../utils/Hooks/useWindowsSize";
 import { PlainText } from "../../../utils/Styled/main";
 
 const ConditionsRow = ({
@@ -7,12 +8,22 @@ const ConditionsRow = ({
   title: string;
   text: string | React.ReactNode;
 }) => {
+  const { width } = useWindowSize();
   return (
     <>
-      <PlainText fontSize="1.125rem" padding="0 0 6px" fontWeight="500">
+      <PlainText
+        fontSize={width && width > 480 ? "1.125rem" : "1rem"}
+        padding="0 0 6px"
+        fontWeight="500"
+      >
         {title}
       </PlainText>
-      <PlainText padding="0 0 24px">{text}</PlainText>
+      <PlainText
+        fontSize={width && width > 480 ? "1rem" : ".875rem"}
+        padding="0 0 24px"
+      >
+        {text}
+      </PlainText>
     </>
   );
 };

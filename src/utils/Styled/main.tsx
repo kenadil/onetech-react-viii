@@ -1,6 +1,7 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  Collapse,
   FormControl,
   FormControlLabel,
   Link,
@@ -144,7 +145,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 480px) {
-    max-width: 300px;
+    max-width: 90%;
 
     & ${HeaderSelect}, & ${HeaderSelect}.reverse {
       display: none;
@@ -174,7 +175,7 @@ export const PageLink = styled(Link)<PageLinkProps>`
   &.header-social,
   &.nav-links {
     text-decoration: none;
-    color: ${(p) => (p.activated === "true" ? "#9d2550" : "#303030")};
+    color: ${(p) => (p.activated ? "#9d2550" : "#303030")};
   }
   &.nav-links {
     font-size: 0.75rem;
@@ -267,6 +268,12 @@ export const Banner = styled.section`
       height: 297px !important;
     }
   }
+
+  .deposits-page & .slider-wrapper {
+    @media (max-width: 480px) {
+      height: 400px !important;
+    }
+  }
   & .carousel.carousel-slider .control-arrow:hover {
     background: none;
 
@@ -352,6 +359,33 @@ export const Banner = styled.section`
       left: 50%;
     }
   }
+
+  .deposits-page & {
+    @media (max-width: 480px) {
+      height: 400px;
+    }
+    ${FlexBox} {
+      @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        p {
+          width: auto;
+          margin-bottom: 140px;
+          height: 94px;
+        }
+
+        img {
+          position: absolute;
+          right: 50%;
+          width: 240px !important;
+          height: auto;
+          margin-right: -120px;
+        }
+      }
+    }
+  }
 `;
 
 export const Slide = styled.div<SlideProps>`
@@ -377,6 +411,11 @@ export const Slide = styled.div<SlideProps>`
     }
   }
 
+  .deposits-page & .inner {
+    @media (max-width: 480px) {
+      min-height: 400px;
+    }
+  }
   & span {
     font-size: 0.75rem;
 
@@ -1081,7 +1120,7 @@ export const Converter = styled.div`
       border: none;
       background: #1e2a41;
       cursor: pointer;
-      transition: .3s ease;
+      transition: 0.3s ease;
 
       @media (max-width: 480px) {
         width: 33px;
@@ -1107,14 +1146,18 @@ export const Converter = styled.div`
 
       :hover {
         transform: rotate(180deg);
-        background: #9D2550;
+        background: #9d2550;
       }
     }
   }
   @keyframes spin {
-    0% ( transfrom: rotate(-180deg);)
-    100%( transform: rotate(180deg); )
-  } 
+    0% {
+      transfrom: rotate(-180deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
 
   @media (max-width: 480px) {
     padding-left: 0;
@@ -1347,7 +1390,7 @@ export const PageFooter = styled.footer`
     button {
       background: #303030;
       border: none;
-      border-box: 4px;
+      border-radius: 4px;
       outline: none;
       padding: 15px 16px;
       color: white;
@@ -1497,37 +1540,6 @@ export const ModalContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const ConditionsInfo = styled.div`
-  text-align: center;
-
-  & .inner {
-    padding: 64px 0;
-    width: 567px;
-    margin: 0 auto;
-  }
-`;
-
-export const Condition = styled.span<PageLinkProps>`
-  flex: 0 1 30%;
-  padding: 39px 17px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:before {
-    background-image: ${(p) =>
-      p.background ? `url(${p.background})` : "none"};
-    content: "";
-    width: 20px;
-    height: 20px;
-    background-size: 20px 20px;
-    display: inline-block;
-    vertical-align: middle;
-    padding-right: 16px;
-    background-repeat: no-repeat;
-  }
-`;
-
 export const PlainText = styled.p<TextProps>`
   color: ${(p) => (p.color ? p.color : "#303030")};
   padding: ${(p) => (p.padding ? p.padding : "0")};
@@ -1552,6 +1564,64 @@ export const PlainText = styled.p<TextProps>`
   }
 `;
 
+export const ConditionsInfo = styled.div`
+  text-align: center;
+  @media (max-width: 480px) {
+    text-align: left;
+
+    & ${FlexBox} {
+      align-items: flex-start;
+
+      span {
+        padding: 13px 0;
+      }
+      span:first-child {
+        padding-top: 16px;
+      }
+      span:last-child {
+        padding-bottom: 16px;
+      }
+    }
+  }
+  & .inner {
+    padding: 64px 0;
+    width: 567px;
+    margin: 0 auto;
+    @media (max-width: 480px) {
+      width: auto;
+      padding: 40px 0;
+    }
+  }
+  & ${PlainText}:last-child {
+    @media (max-width: 480px) {
+      padding: 0;
+      width: 82%;
+      font-size: 0.75rem;
+    }
+  }
+`;
+
+export const Condition = styled.span<PageLinkProps>`
+  flex: 0 1 30%;
+  padding: 39px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    background-image: ${(p) =>
+      p.background ? `url(${p.background})` : "none"};
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 16px;
+    background-repeat: no-repeat;
+  }
+`;
+
 export const AdvantagesContainer = styled.div`
   & .inner {
     padding: 0 0 65px;
@@ -1568,6 +1638,19 @@ export const CollapsiblesContainer = styled.div`
     align-items: center;
     justify-content: space-between;
 
+    span {
+      text-decoration: none;
+      color: #303030;
+      text-shadow: none;
+      @media (max-width: 480px) {
+        width: 249px;
+      }
+      :hover {
+        color: #303030;
+        box-shadow: none;
+      }
+    }
+
     :after {
       transition: 0.3s ease-out;
       display: inline-block;
@@ -1575,10 +1658,21 @@ export const CollapsiblesContainer = styled.div`
       width: 12px;
       height: 6px;
     }
+
+    @media (max-width: 480px) {
+      padding: 16px 8px;
+    }
   }
 
   & .css-smkl36-MuiCollapse-wrapper {
     padding: 0 20px 20px;
+  }
+`;
+
+export const CollapseItem = styled(Collapse)`
+  @media (max-width: 480px) {
+    font-size: 0.875rem;
+    width: 75%;
   }
 `;
 
@@ -1594,6 +1688,19 @@ export const QAContainer = styled.div`
       background-size: 14px;
       background-position: center;
       background-repeat: no-repeat;
+
+      @media (max-width: 480px) {
+        box-sizing: border-box;
+      }
+    }
+    @media (max-width: 480px) {
+      font-weight: 400;
+    }
+  }
+
+  @media (max-width: 480px) {
+    & ${Title} {
+      font-size: 1.125rem;
     }
   }
 `;
@@ -1603,6 +1710,10 @@ export const ExpressContainer = styled.div`
   & .inner {
     padding: 0;
     text-align: center;
+  }
+
+  & ${Title}:first-child {
+    text-align: left;
   }
 `;
 
@@ -1620,6 +1731,42 @@ export const ExpressSwitchContainer = styled.div`
   }
 `;
 
+export const InputGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: auto;
+  width: 100%;
+  @media (max-width: 480px) {
+    & .increase,
+    & .decrease,
+    & input {
+      height: 48px;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    & .increase,
+    .decrease {
+      outline: none;
+      border: none;
+      border-radius: 4px;
+      width: 48px;
+
+      background: #9d2550;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+
+    & .decrease {
+      justify-self: start;
+    }
+
+    & .increase {
+      justify-self: end;
+    }
+  }
+`;
+
 export const ExpressCalculatorContainer = styled.div`
   border-radius: 4px;
   max-width: 808px;
@@ -1627,6 +1774,15 @@ export const ExpressCalculatorContainer = styled.div`
   background: #f2f2f2;
   box-sizing: border-box;
   padding: 40px 82px;
+  @media (max-width: 480px) {
+    padding: 26px 12px;
+
+    & ${Title} {
+      text-align: center;
+      padding: 0 0 16px;
+      font-weight: 500;
+    }
+  }
 
   & .slider-selection {
     display: none;
@@ -1638,7 +1794,15 @@ export const ExpressCalculatorContainer = styled.div`
 
   & ${FlexBox} {
     padding: 0 0 8px;
+    @media (max-width: 480px) {
+      padding-bottom: 40px;
+    }
   }
+
+  & .filled {
+    padding-bottom: 0;
+  }
+
   & .currency-symbol {
     position: relative;
     display: inline;
@@ -1653,11 +1817,21 @@ export const ExpressCalculatorContainer = styled.div`
 
   & hr {
     margin: 40px 0 21px;
+    @media (max-width: 480px) {
+      margin: 24px 0;
+      background: #e0e0e0;
+      border-color: #e0e0e0;
+      opacity: 0.4;
+    }
   }
 
   & .express-result {
     padding-right: 20px;
     width: 70%;
+    @media (max-width: 480px) {
+      padding-right: 0;
+      padding-bottom: 24px;
+    }
   }
 
   & .inner {
@@ -1673,6 +1847,10 @@ export const ExpressCalculatorContainer = styled.div`
       .result {
         font-size: 1.5rem;
         font-weight: 500;
+      }
+
+      @media (max-width: 480px) {
+        flex-direction: column;
       }
     }
     .reward-pay {
@@ -1691,7 +1869,16 @@ export const ExpressInputContainer = styled(TextField)`
     max-width: 172px;
     background: #fff;
     font-size: 1.5rem;
+    @media (max-width: 480px) {
+      font-size: 1.125rem;
+      text-align: center;
+      padding-right: 9px;
+    }
   }
+`;
+
+export const InlineBlockContainer = styled.div`
+  display: inline-block;
 `;
 
 export const PeriodButtons = styled.div`
@@ -1712,10 +1899,22 @@ export const PeriodButtons = styled.div`
     :hover {
       opacity: 0.2;
     }
+
+    @media (max-width: 480px) {
+      justify-self: center;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      width: 90%;
+    }
   }
 
   & button.active {
     opacity: 1;
+  }
+
+  @media (max-width: 480px) {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
   }
 `;
 
@@ -1723,6 +1922,9 @@ export const ExpressFormLayout = styled(FormControl)`
   && {
     width: 600px;
     margin: 40px auto 0;
+    @media (max-width: 480px) {
+      width: auto;
+    }
   }
 
   & fieldset {
@@ -1754,6 +1956,20 @@ export const ExpressFormLayout = styled(FormControl)`
 
     .MuiFormControl-root {
       flex: 0 1 288px;
+      @media (max-width: 480px) {
+        flex: auto;
+        width: 100%;
+        padding-bottom: 24px;
+        :last-child {
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    @media (max-width: 480px) {
+      width: auto;
+      align-items: center;
+      flex-direction: column;
     }
   }
 
@@ -1774,6 +1990,9 @@ export const ExpressFormLayout = styled(FormControl)`
       color: #9d2550;
       background: #fff;
     }
+    @media (max-width: 480px) {
+      margin: 0 auto;
+    }
   }
   & button [disabled],
   & button:disabled {
@@ -1783,6 +2002,13 @@ export const ExpressFormLayout = styled(FormControl)`
     :hover {
       color: #737373;
       background: #e0e0e0;
+    }
+  }
+
+  & ${PlainText} {
+    @media (max-width: 480px) {
+      width: 270px;
+      margin: 0 auto;
     }
   }
 `;
@@ -1865,6 +2091,23 @@ export const ConditionsContainer = styled.section`
         opacity: 1;
       }
     }
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+
+  & {
+    .carousel .slider-wrapper,
+    .carousel.carousel-slider {
+      overflow: unset;
+    }
+    .carousel .slider-wrapper {
+      margin: 0;
+      width: 65%;
+    }
+    .carousel .slider-wrapper.axis-horizontal .slider .slide {
+      margin-right: 4px;
+    }
   }
 `;
 
@@ -1874,11 +2117,21 @@ export const ConditionsCardItem = styled.div`
 
   overflow: hidden;
   border-radius: 4px;
+  @media (max-width: 480px) {
+    margin-bottom: 24px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 export const ConditionsCardHeader = styled.div`
   background: rgba(224, 224, 224, 0.6);
   padding: 16px 32px;
+
+  @media (max-width: 480px) {
+    font-size: 1.125rem;
+  }
 `;
 
 export const ConditionsCardBody = styled.div`
@@ -1946,6 +2199,20 @@ export const EyecatcherCards = styled.section`
       :last-child {
         padding-bottom: 0;
       }
+    }
+  }
+
+  & {
+    .carousel .slider-wrapper,
+    .carousel.carousel-slider {
+      overflow: unset;
+    }
+    .carousel .slider-wrapper {
+      margin: 0;
+      width: 75%;
+    }
+    .carousel .slider-wrapper.axis-horizontal .slider .slide {
+      margin-right: 4px;
     }
   }
 `;

@@ -8,7 +8,7 @@ type SocialButtonProps = {
 
 const SocialButton = ({ url, text }: SocialButtonProps) => {
   return (
-    <PageLink className="header-social">
+    <PageLink className="header-social" activated={false}>
       <img src={url} alt={url} />
       <span>{text}</span>
     </PageLink>

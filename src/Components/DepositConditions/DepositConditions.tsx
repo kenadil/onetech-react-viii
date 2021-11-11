@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useWindowSize } from "../../utils/Hooks/useWindowsSize";
 import { ConditionsContainer, Container, Title } from "../../utils/Styled/main";
 import ConditionsChanger from "../Functional/Conditions/Conditions";
 import ConditionsCards from "./Cards/ConditionsCards";
@@ -13,6 +14,7 @@ const DepositConditions = () => {
     "Важно",
     "Типовые условия",
   ];
+  const { width } = useWindowSize();
   return (
     <ConditionsContainer>
       <Container>
@@ -21,7 +23,10 @@ const DepositConditions = () => {
           handleChange={handleChange}
           conditions={conditions}
         />
-        <Title fontSize="1.875rem" padding="48px 0 24px">
+        <Title
+          fontSize={width && width > 480 ? "1.875rem" : "1.5rem"}
+          padding="48px 0 24px"
+        >
           Получить кредит на выгодных условиях
         </Title>
         <ConditionsCards />

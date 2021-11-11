@@ -7,7 +7,12 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
-import { ExpressFormLayout, FlexBox } from "../../../utils/Styled/main";
+import {
+  ExpressFormLayout,
+  FlexBox,
+  PlainText,
+  Title,
+} from "../../../utils/Styled/main";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputMask from "react-input-mask";
@@ -15,6 +20,7 @@ import { idOfLength } from "../../../utils/types/CheckLength";
 import ExpressInfo from "./ExpressInfo";
 import OfferModal from "./OfferModal";
 import LoanContext from "../../../utils/Context/Context";
+import { useWindowSize } from "../../../utils/Hooks/useWindowsSize";
 
 type ValueState = {
   id: string;
@@ -132,108 +138,121 @@ const ExpressForm = () => {
       incomes: value === 0 || value < resultAmount,
     }));
   }, [values.incomes, amount, discountCheck, duration]);
+  const size = useWindowSize();
   return (
-    <form onSubmit={handleSubmit}>
-      <ExpressFormLayout>
-        <InputLabel htmlFor="outlined-password-input" error={errors["id"]}>
-          ИИН
-        </InputLabel>
-        <OutlinedInput
-          autoComplete="off"
-          error={errors["id"]}
-          name="id"
-          id="outlined-password-input"
-          value={values.id}
-          onChange={handleChange("id")}
-          type={showPassword ? "text" : "password"}
-          label="ИИН*"
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-        {errors.id && (
-          <FormHelperText error id="accountId-error">
-            * Обязательно к заполнению, не может быть меньше 12 символов
-          </FormHelperText>
-        )}
-        <FlexBox className="jscsp">
-          <InputMask
-            name="phoneNumber"
-            mask="+7 (799) 999 99 99"
-            value={values.phoneNumber}
-            onChange={handleMaskChange}
-          >
-            {() => (
-              <TextField
-                error={errors["phoneNumber"]}
-                helperText={
-                  errors["phoneNumber"] && "* Обязательно к заполнению"
-                }
-                id="outlined-phone-number"
-                label="Номер телефона"
-                variant="outlined"
-              />
-            )}
-          </InputMask>
-          <TextField
-            error={errors["incomes"]}
-            onError={() => <div>Папочка зол</div>}
-            name="incomes"
-            id="outlined-income-amount"
-            label="Основной ежемесяч. доход, ₸ "
-            variant="outlined"
+    <>
+      {size.width && size.width > 480 ? (
+        ""
+      ) : (
+        <>
+          <Title fontSize="1.125rem" padding="40px 0 19px">
+            Предварительный расчёт не является офертой
+          </Title>
+          <PlainText>Для уточнения подайте заявку</PlainText>
+        </>
+      )}
+      <form onSubmit={handleSubmit}>
+        <ExpressFormLayout>
+          <InputLabel htmlFor="outlined-password-input" error={errors["id"]}>
+            ИИН
+          </InputLabel>
+          <OutlinedInput
             autoComplete="off"
-            helperText={
-              errors.incomes &&
-              "* Обязательно к заполнению, не должно быть меньше ежемесячного платежа"
+            error={errors["id"]}
+            name="id"
+            id="outlined-password-input"
+            value={values.id}
+            onChange={handleChange("id")}
+            type={showPassword ? "text" : "password"}
+            label="ИИН*"
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
             }
-            value={
-              values.incomes
-                ? values.incomes
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-                : ""
-            }
-            onChange={handleChange("incomes")}
           />
-        </FlexBox>
-        <ExpressInfo />
-        <button
-          disabled={errors.id || errors.phoneNumber || errors.incomes}
-          type="submit"
-        >
-          Оформить кредит
-        </button>
-      </ExpressFormLayout>
-      <OfferModal
-        open={open}
-        handleClose={handleClose}
-        nodes={JSON.stringify({
-          credentials: values,
-          deposit: {
-            amount: amount,
-            period: duration,
-            discount: discountCheck,
-            monthPay:
-              typeof amount === "number" && typeof duration === "number"
-                ? Math.round(
-                    amount / duration +
-                      (amount / duration) *
-                        (discountCheck ? 0.1499 : 0.1699 + 0.217)
-                  )
-                : 0,
-          },
-        })}
-      />
-    </form>
+          {errors.id && (
+            <FormHelperText error id="accountId-error">
+              * Обязательно к заполнению, не может быть меньше 12 символов
+            </FormHelperText>
+          )}
+          <FlexBox className="jscsp">
+            <InputMask
+              name="phoneNumber"
+              mask="+7 (799) 999 99 99"
+              value={values.phoneNumber}
+              onChange={handleMaskChange}
+            >
+              {() => (
+                <TextField
+                  error={errors["phoneNumber"]}
+                  helperText={
+                    errors["phoneNumber"] && "* Обязательно к заполнению"
+                  }
+                  id="outlined-phone-number"
+                  label="Номер телефона"
+                  variant="outlined"
+                />
+              )}
+            </InputMask>
+            <TextField
+              error={errors["incomes"]}
+              onError={() => <div>Папочка зол</div>}
+              name="incomes"
+              id="outlined-income-amount"
+              label="Основной ежемесяч. доход, ₸ "
+              variant="outlined"
+              autoComplete="off"
+              helperText={
+                errors.incomes &&
+                "* Обязательно к заполнению, не должно быть меньше ежемесячного платежа"
+              }
+              value={
+                values.incomes
+                  ? values.incomes
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                  : ""
+              }
+              onChange={handleChange("incomes")}
+            />
+          </FlexBox>
+          <ExpressInfo />
+          <button
+            disabled={errors.id || errors.phoneNumber || errors.incomes}
+            type="submit"
+          >
+            Получить кредит
+          </button>
+        </ExpressFormLayout>
+        <OfferModal
+          open={open}
+          handleClose={handleClose}
+          nodes={JSON.stringify({
+            credentials: values,
+            deposit: {
+              amount: amount,
+              period: duration,
+              discount: discountCheck,
+              monthPay:
+                typeof amount === "number" && typeof duration === "number"
+                  ? Math.round(
+                      amount / duration +
+                        (amount / duration) *
+                          (discountCheck ? 0.1499 : 0.1699 + 0.217)
+                    )
+                  : 0,
+            },
+          })}
+        />
+      </form>
+    </>
   );
 };
 
