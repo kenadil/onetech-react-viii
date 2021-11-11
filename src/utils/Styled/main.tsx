@@ -2214,5 +2214,30 @@ export const EyecatcherCards = styled.section`
     .carousel .slider-wrapper.axis-horizontal .slider .slide {
       margin-right: 4px;
     }
+
+    .carousel .control-dots .dot {
+      opacity: 1;
+      box-shadow: none;
+      width: 18px;
+      height: 18px;
+    }
+    .carousel .control-dots .dot:after {
+      content: "";
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      top: 24%;
+      margin: 0 4.5px 0 -4px;
+      background-image: url(/images/icons/dot.svg);
+      background-size: 8px 8px;
+    }
+    .carousel .control-dots .dot.selected {
+      border: 1px solid #303030;
+    }
+    .carousel .control-dots {
+      bottom: -50%;
+    }
   }
 `;
