@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Deposits from "../../Pages/Deposits/Deposits";
+import FormSubmitted from "../../Pages/FormSubmitted/FormSubmitted";
 import Main from "../../Pages/Main/Main";
 import { PageWrapper } from "../../utils/Styled/main";
 import Footer from "../Footer/Footer";
@@ -11,6 +12,7 @@ const Wrapper = () => {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/deposits" element={<Deposits />} />
+          <Route path="/submitted" element={<FormSubmitted />} />
         </Routes>
         <Footer />
       </PageWrapper>
